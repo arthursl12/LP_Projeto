@@ -8,6 +8,19 @@ type slvalue = Tokens.svalue
 type ('a,'b) token = ('a,'b) Tokens.token
 type lexresult = (slvalue, pos)token
 
+
+fun keyword(s, lpos, rpos) =
+    case s of 
+        "Int"   => INT(lpos, rpos)
+        | "Bool"  => BOOL(lpos, rpos)
+        | _     => NAME(s, lpos, rpos)
+
+fun strToInt s =
+    case Int.fromString s of
+        SOME i => i
+    |   NONE => raise Fail ("Could not convert string '" ^ s ^ "' to integer")
+
+
 (* A function to print a message error on the screen. *)
 val error = fn x => TextIO.output(TextIO.stdOut, x ^ "\n")
 val lineNumber = ref 0
@@ -28,4 +41,12 @@ fun init() = ()
 %%
 %header (functor PlcLexerFun(structure Tokens: PlcParser_TOKENS));
 
+nat = [0-9]+;
+name = [a-zA-Z_][a-zA-Z_0-9]*;
+whitespace = [\ \t];
 %%
+
+\n => (lineNumber := !lineNumber + 1; lex());
+{whitespace}+ => (lex());
+{name} => (keyword(yytext, yypos, yypos));
+{nat} => (CINT(strToInt(yytext),yypos, yypos));

@@ -18,6 +18,14 @@ Control.Print.stringDepth := 1000;
 
 open PlcFrontEnd;
 
+print "================Início=============\n";
+print "================Tipos=============\n";
+
+fromString "Int";
+fromString "Bool";
+
+print "================Fim Tipos=============\n";
+
 fromString "15";
 fromString "true";
 fromString "()";
