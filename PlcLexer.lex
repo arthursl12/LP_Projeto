@@ -11,9 +11,14 @@ type lexresult = (slvalue, pos)token
 
 fun keyword(s, lpos, rpos) =
     case s of 
-        "Int"   => INT(lpos, rpos)
+        "Int"   => (
+            print "Int00\n";
+            INT(lpos, rpos)
+        )
         | "Bool"  => BOOL(lpos, rpos)
         | "Nil" => NIL(lpos, rpos)
+        | "true" => TRUE(lpos, rpos)
+        | "false" => FALSE(lpos, rpos)
         | _     => NAME(s, lpos, rpos)
         
 
@@ -51,12 +56,13 @@ whitespace = [\ \t];
 \n => (lineNumber := !lineNumber + 1; lex());
 {whitespace}+ => (lex());
 {name} => (keyword(yytext, yypos, yypos));
-{nat} => (CINT(strToInt(yytext),yypos, yypos));
+{nat} => (NAT(strToInt(yytext),yypos, yypos));
 "(" => (LPAR(yypos, yypos));
 ")" => (RPAR(yypos, yypos));
 "[" => (LBRACK(yypos, yypos));
 "]" => (RBRACK(yypos, yypos));
 "," => (COMMA(yypos, yypos));
+"->" => (print "Arrow\n"; ARROW(yypos, yypos));
 
 . => (error("\n***lexer error: bad character ***\n"); raise Fail("Lexer error:"^
         "bad character " ^ yytext));

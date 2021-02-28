@@ -6,13 +6,15 @@ val EOF:  'a * 'a -> (svalue,'a) token
 val NIL:  'a * 'a -> (svalue,'a) token
 val INT:  'a * 'a -> (svalue,'a) token
 val BOOL:  'a * 'a -> (svalue,'a) token
-val CBOOL: (bool) *  'a * 'a -> (svalue,'a) token
-val CINT: (int) *  'a * 'a -> (svalue,'a) token
+val FALSE:  'a * 'a -> (svalue,'a) token
+val TRUE:  'a * 'a -> (svalue,'a) token
+val NAT: (int) *  'a * 'a -> (svalue,'a) token
 val NAME: (string) *  'a * 'a -> (svalue,'a) token
 val RBRACK:  'a * 'a -> (svalue,'a) token
 val LBRACK:  'a * 'a -> (svalue,'a) token
 val RPAR:  'a * 'a -> (svalue,'a) token
 val LPAR:  'a * 'a -> (svalue,'a) token
+val ARROW:  'a * 'a -> (svalue,'a) token
 val COMMA:  'a * 'a -> (svalue,'a) token
 val SEMIC:  'a * 'a -> (svalue,'a) token
 val EQ:  'a * 'a -> (svalue,'a) token

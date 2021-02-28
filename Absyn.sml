@@ -1,9 +1,8 @@
 (*Absyn*)
 
 datatype plcType =
-   IntT
+   IntT                           
   | BoolT
-  | NilT
   | FunT of plcType * plcType
   | ListT of plcType list
   | SeqT of plcType;

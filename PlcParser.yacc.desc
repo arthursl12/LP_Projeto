@@ -1,0 +1,428 @@
+start symbol used on the rhs of 1 rule
+
+warning: start symbol appears on the rhs of <AtomExpr : LPAR Expr RPAR >
+
+state 0:
+
+	Expr : . AtomExpr 
+
+	LPAR	shift 7
+	NAME	shift 6
+	NAT	shift 5
+	TRUE	shift 4
+	FALSE	shift 3
+
+	Expr	goto 34
+	AtomExpr	goto 2
+	Const	goto 1
+
+	.	error
+
+
+state 1:
+
+	AtomExpr : Const .  (reduce by rule 1)
+
+
+
+	.	reduce by rule 1
+
+
+state 2:
+
+	Expr : AtomExpr .  (reduce by rule 0)
+
+
+
+	.	reduce by rule 0
+
+
+state 3:
+
+	Const : FALSE .  (reduce by rule 5)
+
+
+
+	.	reduce by rule 5
+
+
+state 4:
+
+	Const : TRUE .  (reduce by rule 4)
+
+
+
+	.	reduce by rule 4
+
+
+state 5:
+
+	Const : NAT .  (reduce by rule 6)
+
+
+
+	.	reduce by rule 6
+
+
+state 6:
+
+	AtomExpr : NAME .  (reduce by rule 2)
+
+
+
+	.	reduce by rule 2
+
+
+state 7:
+
+	AtomExpr : LPAR . Expr RPAR 
+	Const : LPAR . RPAR 
+	Const : LPAR . Type LBRACK RBRACK RPAR 
+
+	LPAR	shift 16
+	RPAR	shift 15
+	LBRACK	shift 14
+	NAME	shift 6
+	NAT	shift 5
+	TRUE	shift 4
+	FALSE	shift 3
+	BOOL	shift 13
+	INT	shift 12
+	NIL	shift 11
+
+	Expr	goto 10
+	AtomExpr	goto 2
+	Type	goto 9
+	AtomType	goto 8
+	Const	goto 1
+
+	.	error
+
+
+state 8:
+
+	Type : AtomType .  (reduce by rule 9)
+
+
+
+	.	reduce by rule 9
+
+
+state 9:
+
+	Type : Type . ARROW Type 
+	Const : LPAR Type . LBRACK RBRACK RPAR 
+
+	ARROW	shift 18
+	LBRACK	shift 17
+
+
+	.	error
+
+
+state 10:
+
+	AtomExpr : LPAR Expr . RPAR 
+
+	RPAR	shift 19
+
+
+	.	error
+
+
+state 11:
+
+	AtomType : NIL .  (reduce by rule 13)
+
+
+
+	.	reduce by rule 13
+
+
+state 12:
+
+	AtomType : INT .  (reduce by rule 15)
+
+
+
+	.	reduce by rule 15
+
+
+state 13:
+
+	AtomType : BOOL .  (reduce by rule 14)
+
+
+
+	.	reduce by rule 14
+
+
+state 14:
+
+	Type : LBRACK . Type RBRACK 
+
+	LPAR	shift 21
+	LBRACK	shift 14
+	BOOL	shift 13
+	INT	shift 12
+	NIL	shift 11
+
+	Type	goto 20
+	AtomType	goto 8
+
+	.	error
+
+
+state 15:
+
+	Const : LPAR RPAR .  (reduce by rule 7)
+
+
+
+	.	reduce by rule 7
+
+
+state 16:
+
+	AtomExpr : LPAR . Expr RPAR 
+	Type : LPAR . Types RPAR 
+	AtomType : LPAR . Type RPAR 
+	Const : LPAR . RPAR 
+	Const : LPAR . Type LBRACK RBRACK RPAR 
+
+	LPAR	shift 16
+	RPAR	shift 15
+	LBRACK	shift 14
+	NAME	shift 6
+	NAT	shift 5
+	TRUE	shift 4
+	FALSE	shift 3
+	BOOL	shift 13
+	INT	shift 12
+	NIL	shift 11
+
+	Expr	goto 10
+	AtomExpr	goto 2
+	Type	goto 23
+	AtomType	goto 8
+	Types	goto 22
+	Const	goto 1
+
+	.	error
+
+
+state 17:
+
+	Const : LPAR Type LBRACK . RBRACK RPAR 
+
+	RBRACK	shift 24
+
+
+	.	error
+
+
+state 18:
+
+	Type : Type ARROW . Type 
+
+	LPAR	shift 21
+	LBRACK	shift 14
+	BOOL	shift 13
+	INT	shift 12
+	NIL	shift 11
+
+	Type	goto 25
+	AtomType	goto 8
+
+	.	error
+
+
+state 19:
+
+	AtomExpr : LPAR Expr RPAR .  (reduce by rule 3)
+
+
+
+	.	reduce by rule 3
+
+
+state 20:
+
+	Type : LBRACK Type . RBRACK 
+	Type : Type . ARROW Type 
+
+	ARROW	shift 18
+	RBRACK	shift 26
+
+
+	.	error
+
+
+state 21:
+
+	Type : LPAR . Types RPAR 
+	AtomType : LPAR . Type RPAR 
+
+	LPAR	shift 21
+	LBRACK	shift 14
+	BOOL	shift 13
+	INT	shift 12
+	NIL	shift 11
+
+	Type	goto 27
+	AtomType	goto 8
+	Types	goto 22
+
+	.	error
+
+
+state 22:
+
+	Type : LPAR Types . RPAR 
+
+	RPAR	shift 28
+
+
+	.	error
+
+
+state 23:
+
+	Type : Type . ARROW Type 
+	AtomType : LPAR Type . RPAR 
+	Types : Type . COMMA Type 
+	Types : Type . COMMA Types 
+	Const : LPAR Type . LBRACK RBRACK RPAR 
+
+	COMMA	shift 30
+	ARROW	shift 18
+	RPAR	shift 29
+	LBRACK	shift 17
+
+
+	.	error
+
+
+state 24:
+
+	Const : LPAR Type LBRACK RBRACK . RPAR 
+
+	RPAR	shift 31
+
+
+	.	error
+
+
+state 25:
+
+	Type : Type . ARROW Type 
+	Type : Type ARROW Type .  (reduce by rule 12)
+
+	ARROW	shift 18
+
+
+	.	reduce by rule 12
+
+
+state 26:
+
+	Type : LBRACK Type RBRACK .  (reduce by rule 11)
+
+
+
+	.	reduce by rule 11
+
+
+state 27:
+
+	Type : Type . ARROW Type 
+	AtomType : LPAR Type . RPAR 
+	Types : Type . COMMA Type 
+	Types : Type . COMMA Types 
+
+	COMMA	shift 30
+	ARROW	shift 18
+	RPAR	shift 29
+
+
+	.	error
+
+
+state 28:
+
+	Type : LPAR Types RPAR .  (reduce by rule 10)
+
+
+
+	.	reduce by rule 10
+
+
+state 29:
+
+	AtomType : LPAR Type RPAR .  (reduce by rule 16)
+
+
+
+	.	reduce by rule 16
+
+
+state 30:
+
+	Types : Type COMMA . Type 
+	Types : Type COMMA . Types 
+
+	LPAR	shift 21
+	LBRACK	shift 14
+	BOOL	shift 13
+	INT	shift 12
+	NIL	shift 11
+
+	Type	goto 33
+	AtomType	goto 8
+	Types	goto 32
+
+	.	error
+
+
+state 31:
+
+	Const : LPAR Type LBRACK RBRACK RPAR .  (reduce by rule 8)
+
+
+
+	.	reduce by rule 8
+
+
+state 32:
+
+	Types : Type COMMA Types .  (reduce by rule 18)
+
+
+
+	.	reduce by rule 18
+
+
+state 33:
+
+	Type : Type . ARROW Type 
+	Types : Type . COMMA Type 
+	Types : Type COMMA Type .  (reduce by rule 17)
+	Types : Type . COMMA Types 
+
+	COMMA	shift 30
+	ARROW	shift 18
+
+
+	.	reduce by rule 17
+
+
+state 34:
+
+
+	EOF	accept
+
+
+	.	error
+
+39 of 99 action table entries left after compaction
+24 goto table entries

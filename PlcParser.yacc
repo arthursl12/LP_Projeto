@@ -7,10 +7,11 @@
 (* Tokens *)
 %term   VAR
 | PLUS | MINUS | MULTI | DIV | EQ
-| SEMIC | COMMA
+| SEMIC | COMMA | ARROW
 | LPAR | RPAR | LBRACK | RBRACK
 | NAME of string
-| CINT of int | CBOOL of bool
+| NAT of int
+| TRUE | FALSE
 | BOOL | INT | NIL
 | EOF
 
@@ -23,27 +24,42 @@
     | Type of plcType
     | AtomType of plcType
     | Types of plcType list
+    | Const of expr
 
 (* Associativity *)
-%right SEMIC
-%left EQ PLUS MINUS MULTI DIV
+%right SEMIC ARROW
+%left EQ PLUS MINUS MULTI DIV 
+%left RBRACK
 
 (* Where to end parsing *)
 %eop EOF
 %noshift EOF
 
 (* Start symbol *)
-%start Type
+%start Expr
 
-
+%verbose 
 
 %%
+
+Expr    :   AtomExpr (AtomExpr)
+
+AtomExpr:   Const (Const)
+    |   NAME    (Var(NAME))
+    |   LPAR Expr RPAR (Expr)
+
+Const   :   TRUE    (ConB(true))
+    |   FALSE   (ConB(false))
+    |   NAT     (ConI(NAT))
+    |   LPAR RPAR (List(nil))
+    |   LPAR Type LBRACK RBRACK RPAR (ESeq(Type))
 
 Type    :   AtomType (AtomType)
     |   LPAR Types RPAR (ListT(Types))
     |   LBRACK Type RBRACK (SeqT(Type))
+    |   Type ARROW Type (FunT((Type1,Type2)))
 
-AtomType:   NIL (NilT)
+AtomType:   NIL (ListT(nil))
     |   BOOL    (BoolT)
     |   INT     (IntT)
     |   LPAR Type RPAR (Type)

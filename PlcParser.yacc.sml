@@ -15,50 +15,94 @@ structure Token = Token
 local open LrTable in 
 val table=let val actionRows =
 "\
-\\001\000\008\000\015\000\010\000\014\000\000\000\
-\\001\000\009\000\008\000\011\000\007\000\016\000\006\000\017\000\005\000\
-\\018\000\004\000\000\000\
-\\001\000\010\000\013\000\000\000\
-\\001\000\012\000\012\000\000\000\
-\\001\000\019\000\000\000\000\000\
-\\019\000\000\000\
-\\020\000\000\000\
-\\021\000\000\000\
-\\022\000\000\000\
-\\023\000\000\000\
-\\024\000\000\000\
-\\025\000\000\000\
-\\026\000\008\000\015\000\000\000\
-\\027\000\000\000\
+\\001\000\008\000\032\000\009\000\020\000\011\000\031\000\000\000\
+\\001\000\008\000\032\000\009\000\020\000\011\000\031\000\012\000\019\000\000\000\
+\\001\000\009\000\020\000\012\000\019\000\000\000\
+\\001\000\009\000\020\000\013\000\028\000\000\000\
+\\001\000\010\000\009\000\014\000\008\000\015\000\007\000\016\000\006\000\
+\\017\000\005\000\000\000\
+\\001\000\010\000\018\000\011\000\017\000\012\000\016\000\014\000\008\000\
+\\015\000\007\000\016\000\006\000\017\000\005\000\018\000\015\000\
+\\019\000\014\000\020\000\013\000\000\000\
+\\001\000\010\000\023\000\012\000\016\000\018\000\015\000\019\000\014\000\
+\\020\000\013\000\000\000\
+\\001\000\011\000\021\000\000\000\
+\\001\000\011\000\030\000\000\000\
+\\001\000\011\000\033\000\000\000\
+\\001\000\013\000\026\000\000\000\
+\\001\000\021\000\000\000\000\000\
+\\037\000\000\000\
+\\038\000\000\000\
+\\039\000\000\000\
+\\040\000\000\000\
+\\041\000\000\000\
+\\042\000\000\000\
+\\043\000\000\000\
+\\044\000\000\000\
+\\045\000\000\000\
+\\046\000\000\000\
+\\047\000\000\000\
+\\048\000\000\000\
+\\049\000\009\000\020\000\000\000\
+\\050\000\000\000\
+\\051\000\000\000\
+\\052\000\000\000\
+\\053\000\000\000\
+\\054\000\008\000\032\000\009\000\020\000\000\000\
+\\055\000\000\000\
 \"
 val actionRowNumbers =
-"\001\000\005\000\008\000\010\000\
-\\009\000\001\000\001\000\003\000\
-\\002\000\000\000\007\000\006\000\
-\\011\000\001\000\013\000\012\000\
-\\004\000"
+"\004\000\013\000\012\000\017\000\
+\\016\000\018\000\014\000\005\000\
+\\021\000\002\000\007\000\025\000\
+\\027\000\026\000\006\000\019\000\
+\\005\000\010\000\006\000\015\000\
+\\003\000\006\000\008\000\001\000\
+\\009\000\024\000\023\000\000\000\
+\\022\000\028\000\006\000\020\000\
+\\030\000\029\000\011\000"
 val gotoT =
 "\
-\\006\000\016\000\007\000\001\000\000\000\
-\\000\000\
-\\000\000\
-\\000\000\
-\\000\000\
-\\006\000\007\000\007\000\001\000\000\000\
-\\006\000\009\000\007\000\001\000\008\000\008\000\000\000\
+\\003\000\034\000\004\000\002\000\009\000\001\000\000\000\
 \\000\000\
 \\000\000\
 \\000\000\
 \\000\000\
 \\000\000\
 \\000\000\
-\\006\000\015\000\007\000\001\000\008\000\014\000\000\000\
+\\003\000\010\000\004\000\002\000\006\000\009\000\007\000\008\000\
+\\009\000\001\000\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\006\000\020\000\007\000\008\000\000\000\
+\\000\000\
+\\003\000\010\000\004\000\002\000\006\000\023\000\007\000\008\000\
+\\008\000\022\000\009\000\001\000\000\000\
+\\000\000\
+\\006\000\025\000\007\000\008\000\000\000\
+\\000\000\
+\\000\000\
+\\006\000\027\000\007\000\008\000\008\000\022\000\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\006\000\033\000\007\000\008\000\008\000\032\000\000\000\
+\\000\000\
 \\000\000\
 \\000\000\
 \\000\000\
 \"
-val numstates = 17
-val numrules = 9
+val numstates = 35
+val numrules = 19
 val s = ref "" and index = ref 0
 val string_to_int = fn () => 
 let val i = !index
@@ -121,15 +165,15 @@ type arg = unit
 structure MlyValue = 
 struct
 datatype svalue = VOID | ntVOID of unit ->  unit
- | CBOOL of unit ->  (bool) | CINT of unit ->  (int)
- | NAME of unit ->  (string) | Types of unit ->  (plcType list)
+ | NAT of unit ->  (int) | NAME of unit ->  (string)
+ | Const of unit ->  (expr) | Types of unit ->  (plcType list)
  | AtomType of unit ->  (plcType) | Type of unit ->  (plcType)
  | AppExpr of unit ->  (expr) | AtomExpr of unit ->  (expr)
  | Expr of unit ->  (expr) | Decl of unit ->  (expr)
  | Prog of unit ->  (expr)
 end
 type svalue = MlyValue.svalue
-type result = plcType
+type result = expr
 end
 structure EC=
 struct
@@ -141,7 +185,7 @@ fn _ => false
 val preferred_change : (term list * term list) list = 
 nil
 val noShift = 
-fn (T 18) => true | _ => false
+fn (T 20) => true | _ => false
 val showTerminal =
 fn (T 0) => "VAR"
   | (T 1) => "PLUS"
@@ -151,26 +195,28 @@ fn (T 0) => "VAR"
   | (T 5) => "EQ"
   | (T 6) => "SEMIC"
   | (T 7) => "COMMA"
-  | (T 8) => "LPAR"
-  | (T 9) => "RPAR"
-  | (T 10) => "LBRACK"
-  | (T 11) => "RBRACK"
-  | (T 12) => "NAME"
-  | (T 13) => "CINT"
-  | (T 14) => "CBOOL"
-  | (T 15) => "BOOL"
-  | (T 16) => "INT"
-  | (T 17) => "NIL"
-  | (T 18) => "EOF"
+  | (T 8) => "ARROW"
+  | (T 9) => "LPAR"
+  | (T 10) => "RPAR"
+  | (T 11) => "LBRACK"
+  | (T 12) => "RBRACK"
+  | (T 13) => "NAME"
+  | (T 14) => "NAT"
+  | (T 15) => "TRUE"
+  | (T 16) => "FALSE"
+  | (T 17) => "BOOL"
+  | (T 18) => "INT"
+  | (T 19) => "NIL"
+  | (T 20) => "EOF"
   | _ => "bogus-term"
 local open Header in
 val errtermvalue=
 fn _ => MlyValue.VOID
 end
 val terms : term list = nil
- $$ (T 18) $$ (T 17) $$ (T 16) $$ (T 15) $$ (T 11) $$ (T 10) $$ (T 9)
- $$ (T 8) $$ (T 7) $$ (T 6) $$ (T 5) $$ (T 4) $$ (T 3) $$ (T 2) $$ (T 
-1) $$ (T 0)end
+ $$ (T 20) $$ (T 19) $$ (T 18) $$ (T 17) $$ (T 16) $$ (T 15) $$ (T 12)
+ $$ (T 11) $$ (T 10) $$ (T 9) $$ (T 8) $$ (T 7) $$ (T 6) $$ (T 5) $$ 
+(T 4) $$ (T 3) $$ (T 2) $$ (T 1) $$ (T 0)end
 structure Actions =
 struct 
 exception mlyAction of int
@@ -179,7 +225,62 @@ val actions =
 fn (i392,defaultPos,stack,
     (()):arg) =>
 case (i392,stack)
-of  ( 0, ( ( _, ( MlyValue.AtomType AtomType1, AtomType1left, 
+of  ( 0, ( ( _, ( MlyValue.AtomExpr AtomExpr1, AtomExpr1left, 
+AtomExpr1right)) :: rest671)) => let val  result = MlyValue.Expr (fn _
+ => let val  (AtomExpr as AtomExpr1) = AtomExpr1 ()
+ in (AtomExpr)
+end)
+ in ( LrTable.NT 2, ( result, AtomExpr1left, AtomExpr1right), rest671)
+
+end
+|  ( 1, ( ( _, ( MlyValue.Const Const1, Const1left, Const1right)) :: 
+rest671)) => let val  result = MlyValue.AtomExpr (fn _ => let val  (
+Const as Const1) = Const1 ()
+ in (Const)
+end)
+ in ( LrTable.NT 3, ( result, Const1left, Const1right), rest671)
+end
+|  ( 2, ( ( _, ( MlyValue.NAME NAME1, NAME1left, NAME1right)) :: 
+rest671)) => let val  result = MlyValue.AtomExpr (fn _ => let val  (
+NAME as NAME1) = NAME1 ()
+ in (Var(NAME))
+end)
+ in ( LrTable.NT 3, ( result, NAME1left, NAME1right), rest671)
+end
+|  ( 3, ( ( _, ( _, _, RPAR1right)) :: ( _, ( MlyValue.Expr Expr1, _,
+ _)) :: ( _, ( _, LPAR1left, _)) :: rest671)) => let val  result = 
+MlyValue.AtomExpr (fn _ => let val  (Expr as Expr1) = Expr1 ()
+ in (Expr)
+end)
+ in ( LrTable.NT 3, ( result, LPAR1left, RPAR1right), rest671)
+end
+|  ( 4, ( ( _, ( _, TRUE1left, TRUE1right)) :: rest671)) => let val  
+result = MlyValue.Const (fn _ => (ConB(true)))
+ in ( LrTable.NT 8, ( result, TRUE1left, TRUE1right), rest671)
+end
+|  ( 5, ( ( _, ( _, FALSE1left, FALSE1right)) :: rest671)) => let val 
+ result = MlyValue.Const (fn _ => (ConB(false)))
+ in ( LrTable.NT 8, ( result, FALSE1left, FALSE1right), rest671)
+end
+|  ( 6, ( ( _, ( MlyValue.NAT NAT1, NAT1left, NAT1right)) :: rest671))
+ => let val  result = MlyValue.Const (fn _ => let val  (NAT as NAT1) =
+ NAT1 ()
+ in (ConI(NAT))
+end)
+ in ( LrTable.NT 8, ( result, NAT1left, NAT1right), rest671)
+end
+|  ( 7, ( ( _, ( _, _, RPAR1right)) :: ( _, ( _, LPAR1left, _)) :: 
+rest671)) => let val  result = MlyValue.Const (fn _ => (List(nil)))
+ in ( LrTable.NT 8, ( result, LPAR1left, RPAR1right), rest671)
+end
+|  ( 8, ( ( _, ( _, _, RPAR1right)) :: _ :: _ :: ( _, ( MlyValue.Type 
+Type1, _, _)) :: ( _, ( _, LPAR1left, _)) :: rest671)) => let val  
+result = MlyValue.Const (fn _ => let val  (Type as Type1) = Type1 ()
+ in (ESeq(Type))
+end)
+ in ( LrTable.NT 8, ( result, LPAR1left, RPAR1right), rest671)
+end
+|  ( 9, ( ( _, ( MlyValue.AtomType AtomType1, AtomType1left, 
 AtomType1right)) :: rest671)) => let val  result = MlyValue.Type (fn _
  => let val  (AtomType as AtomType1) = AtomType1 ()
  in (AtomType)
@@ -187,40 +288,48 @@ end)
  in ( LrTable.NT 5, ( result, AtomType1left, AtomType1right), rest671)
 
 end
-|  ( 1, ( ( _, ( _, _, RPAR1right)) :: ( _, ( MlyValue.Types Types1, _
-, _)) :: ( _, ( _, LPAR1left, _)) :: rest671)) => let val  result = 
+|  ( 10, ( ( _, ( _, _, RPAR1right)) :: ( _, ( MlyValue.Types Types1,
+ _, _)) :: ( _, ( _, LPAR1left, _)) :: rest671)) => let val  result = 
 MlyValue.Type (fn _ => let val  (Types as Types1) = Types1 ()
  in (ListT(Types))
 end)
  in ( LrTable.NT 5, ( result, LPAR1left, RPAR1right), rest671)
 end
-|  ( 2, ( ( _, ( _, _, RBRACK1right)) :: ( _, ( MlyValue.Type Type1, _
-, _)) :: ( _, ( _, LBRACK1left, _)) :: rest671)) => let val  result = 
-MlyValue.Type (fn _ => let val  (Type as Type1) = Type1 ()
+|  ( 11, ( ( _, ( _, _, RBRACK1right)) :: ( _, ( MlyValue.Type Type1,
+ _, _)) :: ( _, ( _, LBRACK1left, _)) :: rest671)) => let val  result
+ = MlyValue.Type (fn _ => let val  (Type as Type1) = Type1 ()
  in (SeqT(Type))
 end)
  in ( LrTable.NT 5, ( result, LBRACK1left, RBRACK1right), rest671)
 end
-|  ( 3, ( ( _, ( _, NIL1left, NIL1right)) :: rest671)) => let val  
-result = MlyValue.AtomType (fn _ => (NilT))
+|  ( 12, ( ( _, ( MlyValue.Type Type2, _, Type2right)) :: _ :: ( _, ( 
+MlyValue.Type Type1, Type1left, _)) :: rest671)) => let val  result = 
+MlyValue.Type (fn _ => let val  Type1 = Type1 ()
+ val  Type2 = Type2 ()
+ in (FunT((Type1,Type2)))
+end)
+ in ( LrTable.NT 5, ( result, Type1left, Type2right), rest671)
+end
+|  ( 13, ( ( _, ( _, NIL1left, NIL1right)) :: rest671)) => let val  
+result = MlyValue.AtomType (fn _ => (ListT(nil)))
  in ( LrTable.NT 6, ( result, NIL1left, NIL1right), rest671)
 end
-|  ( 4, ( ( _, ( _, BOOL1left, BOOL1right)) :: rest671)) => let val  
+|  ( 14, ( ( _, ( _, BOOL1left, BOOL1right)) :: rest671)) => let val  
 result = MlyValue.AtomType (fn _ => (BoolT))
  in ( LrTable.NT 6, ( result, BOOL1left, BOOL1right), rest671)
 end
-|  ( 5, ( ( _, ( _, INT1left, INT1right)) :: rest671)) => let val  
+|  ( 15, ( ( _, ( _, INT1left, INT1right)) :: rest671)) => let val  
 result = MlyValue.AtomType (fn _ => (IntT))
  in ( LrTable.NT 6, ( result, INT1left, INT1right), rest671)
 end
-|  ( 6, ( ( _, ( _, _, RPAR1right)) :: ( _, ( MlyValue.Type Type1, _,
+|  ( 16, ( ( _, ( _, _, RPAR1right)) :: ( _, ( MlyValue.Type Type1, _,
  _)) :: ( _, ( _, LPAR1left, _)) :: rest671)) => let val  result = 
 MlyValue.AtomType (fn _ => let val  (Type as Type1) = Type1 ()
  in (Type)
 end)
  in ( LrTable.NT 6, ( result, LPAR1left, RPAR1right), rest671)
 end
-|  ( 7, ( ( _, ( MlyValue.Type Type2, _, Type2right)) :: _ :: ( _, ( 
+|  ( 17, ( ( _, ( MlyValue.Type Type2, _, Type2right)) :: _ :: ( _, ( 
 MlyValue.Type Type1, Type1left, _)) :: rest671)) => let val  result = 
 MlyValue.Types (fn _ => let val  Type1 = Type1 ()
  val  Type2 = Type2 ()
@@ -228,8 +337,8 @@ MlyValue.Types (fn _ => let val  Type1 = Type1 ()
 end)
  in ( LrTable.NT 7, ( result, Type1left, Type2right), rest671)
 end
-|  ( 8, ( ( _, ( MlyValue.Types Types1, _, Types1right)) :: _ :: ( _, 
-( MlyValue.Type Type1, Type1left, _)) :: rest671)) => let val  result
+|  ( 18, ( ( _, ( MlyValue.Types Types1, _, Types1right)) :: _ :: ( _,
+ ( MlyValue.Type Type1, Type1left, _)) :: rest671)) => let val  result
  = MlyValue.Types (fn _ => let val  (Type as Type1) = Type1 ()
  val  (Types as Types1) = Types1 ()
  in (Type :: Types)
@@ -239,7 +348,7 @@ end
 | _ => raise (mlyAction i392)
 end
 val void = MlyValue.VOID
-val extract = fn a => (fn MlyValue.Type x => x
+val extract = fn a => (fn MlyValue.Expr x => x
 | _ => let exception ParseInternal
 	in raise ParseInternal end) a ()
 end
@@ -264,27 +373,31 @@ fun SEMIC (p1,p2) = Token.TOKEN (ParserData.LrTable.T 6,(
 ParserData.MlyValue.VOID,p1,p2))
 fun COMMA (p1,p2) = Token.TOKEN (ParserData.LrTable.T 7,(
 ParserData.MlyValue.VOID,p1,p2))
-fun LPAR (p1,p2) = Token.TOKEN (ParserData.LrTable.T 8,(
+fun ARROW (p1,p2) = Token.TOKEN (ParserData.LrTable.T 8,(
 ParserData.MlyValue.VOID,p1,p2))
-fun RPAR (p1,p2) = Token.TOKEN (ParserData.LrTable.T 9,(
+fun LPAR (p1,p2) = Token.TOKEN (ParserData.LrTable.T 9,(
 ParserData.MlyValue.VOID,p1,p2))
-fun LBRACK (p1,p2) = Token.TOKEN (ParserData.LrTable.T 10,(
+fun RPAR (p1,p2) = Token.TOKEN (ParserData.LrTable.T 10,(
 ParserData.MlyValue.VOID,p1,p2))
-fun RBRACK (p1,p2) = Token.TOKEN (ParserData.LrTable.T 11,(
+fun LBRACK (p1,p2) = Token.TOKEN (ParserData.LrTable.T 11,(
 ParserData.MlyValue.VOID,p1,p2))
-fun NAME (i,p1,p2) = Token.TOKEN (ParserData.LrTable.T 12,(
+fun RBRACK (p1,p2) = Token.TOKEN (ParserData.LrTable.T 12,(
+ParserData.MlyValue.VOID,p1,p2))
+fun NAME (i,p1,p2) = Token.TOKEN (ParserData.LrTable.T 13,(
 ParserData.MlyValue.NAME (fn () => i),p1,p2))
-fun CINT (i,p1,p2) = Token.TOKEN (ParserData.LrTable.T 13,(
-ParserData.MlyValue.CINT (fn () => i),p1,p2))
-fun CBOOL (i,p1,p2) = Token.TOKEN (ParserData.LrTable.T 14,(
-ParserData.MlyValue.CBOOL (fn () => i),p1,p2))
-fun BOOL (p1,p2) = Token.TOKEN (ParserData.LrTable.T 15,(
+fun NAT (i,p1,p2) = Token.TOKEN (ParserData.LrTable.T 14,(
+ParserData.MlyValue.NAT (fn () => i),p1,p2))
+fun TRUE (p1,p2) = Token.TOKEN (ParserData.LrTable.T 15,(
 ParserData.MlyValue.VOID,p1,p2))
-fun INT (p1,p2) = Token.TOKEN (ParserData.LrTable.T 16,(
+fun FALSE (p1,p2) = Token.TOKEN (ParserData.LrTable.T 16,(
 ParserData.MlyValue.VOID,p1,p2))
-fun NIL (p1,p2) = Token.TOKEN (ParserData.LrTable.T 17,(
+fun BOOL (p1,p2) = Token.TOKEN (ParserData.LrTable.T 17,(
 ParserData.MlyValue.VOID,p1,p2))
-fun EOF (p1,p2) = Token.TOKEN (ParserData.LrTable.T 18,(
+fun INT (p1,p2) = Token.TOKEN (ParserData.LrTable.T 18,(
+ParserData.MlyValue.VOID,p1,p2))
+fun NIL (p1,p2) = Token.TOKEN (ParserData.LrTable.T 19,(
+ParserData.MlyValue.VOID,p1,p2))
+fun EOF (p1,p2) = Token.TOKEN (ParserData.LrTable.T 20,(
 ParserData.MlyValue.VOID,p1,p2))
 end
 end
