@@ -38,6 +38,13 @@ fromString "(Int,Bool,Nil,Bool)";
 
 print "================Fim Lista de Tipos=========\n";
 
+print "================Tipo Sequência=============\n";
+
+fromString "[Int]";
+fromString "[Bool]";
+fromString "[Nil]";
+
+print "================Fim Tipo Sequência=========\n";
 fromString "15";
 fromString "true";
 fromString "()";

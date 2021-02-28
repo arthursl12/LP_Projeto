@@ -8,7 +8,7 @@
 %term   VAR
 | PLUS | MINUS | MULTI | DIV | EQ
 | SEMIC | COMMA
-| LPAR | RPAR
+| LPAR | RPAR | LBRACK | RBRACK
 | NAME of string
 | CINT of int | CBOOL of bool
 | BOOL | INT | NIL
@@ -41,6 +41,7 @@
 
 Type    :   AtomType (AtomType)
     |   LPAR Types RPAR (ListT(Types))
+    |   LBRACK Type RBRACK (SeqT(Type))
 
 AtomType:   NIL (NilT)
     |   BOOL    (BoolT)

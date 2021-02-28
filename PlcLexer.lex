@@ -54,6 +54,8 @@ whitespace = [\ \t];
 {nat} => (CINT(strToInt(yytext),yypos, yypos));
 "(" => (LPAR(yypos, yypos));
 ")" => (RPAR(yypos, yypos));
+"[" => (LBRACK(yypos, yypos));
+"]" => (RBRACK(yypos, yypos));
 "," => (COMMA(yypos, yypos));
 
 . => (error("\n***lexer error: bad character ***\n"); raise Fail("Lexer error:"^

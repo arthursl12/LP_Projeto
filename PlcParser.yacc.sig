@@ -9,6 +9,8 @@ val BOOL:  'a * 'a -> (svalue,'a) token
 val CBOOL: (bool) *  'a * 'a -> (svalue,'a) token
 val CINT: (int) *  'a * 'a -> (svalue,'a) token
 val NAME: (string) *  'a * 'a -> (svalue,'a) token
+val RBRACK:  'a * 'a -> (svalue,'a) token
+val LBRACK:  'a * 'a -> (svalue,'a) token
 val RPAR:  'a * 'a -> (svalue,'a) token
 val LPAR:  'a * 'a -> (svalue,'a) token
 val COMMA:  'a * 'a -> (svalue,'a) token
