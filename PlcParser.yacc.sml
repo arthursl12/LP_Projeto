@@ -15,33 +15,43 @@ structure Token = Token
 local open LrTable in 
 val table=let val actionRows =
 "\
+\\001\000\008\000\012\000\010\000\011\000\000\000\
 \\001\000\009\000\007\000\014\000\006\000\015\000\005\000\016\000\004\000\000\000\
-\\001\000\010\000\009\000\000\000\
-\\001\000\013\000\000\000\000\000\
-\\011\000\000\000\
-\\012\000\000\000\
-\\013\000\000\000\
-\\014\000\000\000\
-\\015\000\000\000\
+\\001\000\010\000\010\000\000\000\
+\\001\000\017\000\000\000\000\000\
+\\016\000\000\000\
+\\017\000\000\000\
+\\018\000\000\000\
+\\019\000\000\000\
+\\020\000\000\000\
+\\021\000\000\000\
+\\022\000\008\000\012\000\000\000\
+\\023\000\000\000\
 \"
 val actionRowNumbers =
-"\000\000\003\000\004\000\006\000\
-\\005\000\000\000\001\000\007\000\
-\\002\000"
+"\001\000\004\000\006\000\008\000\
+\\007\000\001\000\002\000\000\000\
+\\005\000\009\000\001\000\011\000\
+\\010\000\003\000"
 val gotoT =
 "\
-\\006\000\008\000\007\000\001\000\000\000\
+\\006\000\013\000\007\000\001\000\000\000\
 \\000\000\
 \\000\000\
 \\000\000\
 \\000\000\
-\\006\000\006\000\007\000\001\000\000\000\
+\\006\000\007\000\007\000\001\000\008\000\006\000\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\000\000\
+\\006\000\012\000\007\000\001\000\008\000\011\000\000\000\
 \\000\000\
 \\000\000\
 \\000\000\
 \"
-val numstates = 9
-val numrules = 7
+val numstates = 14
+val numrules = 8
 val s = ref "" and index = ref 0
 val string_to_int = fn () => 
 let val i = !index
@@ -104,11 +114,12 @@ type arg = unit
 structure MlyValue = 
 struct
 datatype svalue = VOID | ntVOID of unit ->  unit
- | CINT of unit ->  (int) | NAME of unit ->  (string)
- | Types of unit ->  (plcType) | AtomType of unit ->  (plcType)
- | Type of unit ->  (plcType) | AppExpr of unit ->  (expr)
- | AtomExpr of unit ->  (expr) | Expr of unit ->  (expr)
- | Decl of unit ->  (expr) | Prog of unit ->  (expr)
+ | CBOOL of unit ->  (bool) | CINT of unit ->  (int)
+ | NAME of unit ->  (string) | Types of unit ->  (plcType list)
+ | AtomType of unit ->  (plcType) | Type of unit ->  (plcType)
+ | AppExpr of unit ->  (expr) | AtomExpr of unit ->  (expr)
+ | Expr of unit ->  (expr) | Decl of unit ->  (expr)
+ | Prog of unit ->  (expr)
 end
 type svalue = MlyValue.svalue
 type result = plcType
@@ -123,7 +134,7 @@ fn _ => false
 val preferred_change : (term list * term list) list = 
 nil
 val noShift = 
-fn (T 12) => true | _ => false
+fn (T 16) => true | _ => false
 val showTerminal =
 fn (T 0) => "VAR"
   | (T 1) => "PLUS"
@@ -137,17 +148,18 @@ fn (T 0) => "VAR"
   | (T 9) => "RPAR"
   | (T 10) => "NAME"
   | (T 11) => "CINT"
-  | (T 12) => "EOF"
+  | (T 12) => "CBOOL"
   | (T 13) => "BOOL"
   | (T 14) => "INT"
   | (T 15) => "NIL"
+  | (T 16) => "EOF"
   | _ => "bogus-term"
 local open Header in
 val errtermvalue=
 fn _ => MlyValue.VOID
 end
 val terms : term list = nil
- $$ (T 15) $$ (T 14) $$ (T 13) $$ (T 12) $$ (T 9) $$ (T 8) $$ (T 7)
+ $$ (T 16) $$ (T 15) $$ (T 14) $$ (T 13) $$ (T 9) $$ (T 8) $$ (T 7)
  $$ (T 6) $$ (T 5) $$ (T 4) $$ (T 3) $$ (T 2) $$ (T 1) $$ (T 0)end
 structure Actions =
 struct 
@@ -165,38 +177,45 @@ end)
  in ( LrTable.NT 5, ( result, AtomType1left, AtomType1right), rest671)
 
 end
-|  ( 1, ( ( _, ( _, NIL1left, NIL1right)) :: rest671)) => let val  
-result = MlyValue.AtomType (fn _ => (IntT))
+|  ( 1, ( ( _, ( _, _, RPAR1right)) :: ( _, ( MlyValue.Types Types1, _
+, _)) :: ( _, ( _, LPAR1left, _)) :: rest671)) => let val  result = 
+MlyValue.Type (fn _ => let val  (Types as Types1) = Types1 ()
+ in (ListT(Types))
+end)
+ in ( LrTable.NT 5, ( result, LPAR1left, RPAR1right), rest671)
+end
+|  ( 2, ( ( _, ( _, NIL1left, NIL1right)) :: rest671)) => let val  
+result = MlyValue.AtomType (fn _ => (NilT))
  in ( LrTable.NT 6, ( result, NIL1left, NIL1right), rest671)
 end
-|  ( 2, ( ( _, ( _, BOOL1left, BOOL1right)) :: rest671)) => let val  
+|  ( 3, ( ( _, ( _, BOOL1left, BOOL1right)) :: rest671)) => let val  
 result = MlyValue.AtomType (fn _ => (BoolT))
  in ( LrTable.NT 6, ( result, BOOL1left, BOOL1right), rest671)
 end
-|  ( 3, ( ( _, ( _, INT1left, INT1right)) :: rest671)) => let val  
+|  ( 4, ( ( _, ( _, INT1left, INT1right)) :: rest671)) => let val  
 result = MlyValue.AtomType (fn _ => (IntT))
  in ( LrTable.NT 6, ( result, INT1left, INT1right), rest671)
 end
-|  ( 4, ( ( _, ( _, _, RPAR1right)) :: ( _, ( MlyValue.Type Type1, _,
+|  ( 5, ( ( _, ( _, _, RPAR1right)) :: ( _, ( MlyValue.Type Type1, _,
  _)) :: ( _, ( _, LPAR1left, _)) :: rest671)) => let val  result = 
 MlyValue.AtomType (fn _ => let val  (Type as Type1) = Type1 ()
  in (Type)
 end)
  in ( LrTable.NT 6, ( result, LPAR1left, RPAR1right), rest671)
 end
-|  ( 5, ( ( _, ( MlyValue.Type Type2, _, Type2right)) :: _ :: ( _, ( 
+|  ( 6, ( ( _, ( MlyValue.Type Type2, _, Type2right)) :: _ :: ( _, ( 
 MlyValue.Type Type1, Type1left, _)) :: rest671)) => let val  result = 
-MlyValue.Types (fn _ => let val  (Type as Type1) = Type1 ()
+MlyValue.Types (fn _ => let val  Type1 = Type1 ()
  val  Type2 = Type2 ()
- in (Type)
+ in (Type1 :: (Type2 :: nil))
 end)
  in ( LrTable.NT 7, ( result, Type1left, Type2right), rest671)
 end
-|  ( 6, ( ( _, ( MlyValue.Types Types1, _, Types1right)) :: _ :: ( _, 
+|  ( 7, ( ( _, ( MlyValue.Types Types1, _, Types1right)) :: _ :: ( _, 
 ( MlyValue.Type Type1, Type1left, _)) :: rest671)) => let val  result
  = MlyValue.Types (fn _ => let val  (Type as Type1) = Type1 ()
- val  Types1 = Types1 ()
- in (Type)
+ val  (Types as Types1) = Types1 ()
+ in (Type :: Types)
 end)
  in ( LrTable.NT 7, ( result, Type1left, Types1right), rest671)
 end
@@ -236,13 +255,15 @@ fun NAME (i,p1,p2) = Token.TOKEN (ParserData.LrTable.T 10,(
 ParserData.MlyValue.NAME (fn () => i),p1,p2))
 fun CINT (i,p1,p2) = Token.TOKEN (ParserData.LrTable.T 11,(
 ParserData.MlyValue.CINT (fn () => i),p1,p2))
-fun EOF (p1,p2) = Token.TOKEN (ParserData.LrTable.T 12,(
-ParserData.MlyValue.VOID,p1,p2))
+fun CBOOL (i,p1,p2) = Token.TOKEN (ParserData.LrTable.T 12,(
+ParserData.MlyValue.CBOOL (fn () => i),p1,p2))
 fun BOOL (p1,p2) = Token.TOKEN (ParserData.LrTable.T 13,(
 ParserData.MlyValue.VOID,p1,p2))
 fun INT (p1,p2) = Token.TOKEN (ParserData.LrTable.T 14,(
 ParserData.MlyValue.VOID,p1,p2))
 fun NIL (p1,p2) = Token.TOKEN (ParserData.LrTable.T 15,(
+ParserData.MlyValue.VOID,p1,p2))
+fun EOF (p1,p2) = Token.TOKEN (ParserData.LrTable.T 16,(
 ParserData.MlyValue.VOID,p1,p2))
 end
 end

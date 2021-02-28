@@ -13,7 +13,9 @@ fun keyword(s, lpos, rpos) =
     case s of 
         "Int"   => INT(lpos, rpos)
         | "Bool"  => BOOL(lpos, rpos)
+        | "Nil" => NIL(lpos, rpos)
         | _     => NAME(s, lpos, rpos)
+        
 
 fun strToInt s =
     case Int.fromString s of
@@ -50,3 +52,9 @@ whitespace = [\ \t];
 {whitespace}+ => (lex());
 {name} => (keyword(yytext, yypos, yypos));
 {nat} => (CINT(strToInt(yytext),yypos, yypos));
+"(" => (LPAR(yypos, yypos));
+")" => (RPAR(yypos, yypos));
+"," => (COMMA(yypos, yypos));
+
+. => (error("\n***lexer error: bad character ***\n"); raise Fail("Lexer error:"^
+        "bad character " ^ yytext));

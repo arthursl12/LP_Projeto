@@ -19,12 +19,24 @@ Control.Print.stringDepth := 1000;
 open PlcFrontEnd;
 
 print "================Início=============\n";
-print "================Tipos=============\n";
+print "================Tipos Simples=============\n";
 
 fromString "Int";
 fromString "Bool";
+fromString "Nil";
+fromString "(  Nil)";
+fromString "( Bool     )";
+fromString "( Int     )";
 
-print "================Fim Tipos=============\n";
+print "================Fim Tipos Simples=========\n";
+print "================Lista de Tipos=============\n";
+
+fromString "(Int,Int)";
+fromString "(Int,Int,Int)";
+fromString "(Bool,Bool)";
+fromString "(Int,Bool,Nil,Bool)";
+
+print "================Fim Lista de Tipos=========\n";
 
 fromString "15";
 fromString "true";
