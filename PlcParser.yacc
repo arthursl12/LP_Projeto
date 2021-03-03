@@ -74,3 +74,26 @@ AtomType:   NIL (ListT(nil))
 
 Types   :   Type COMMA Type (Type1 :: (Type2 :: nil))
     |   Type COMMA Types (Type :: Types)
+
+%%
+(*
+CHECK-LIST:
+WIP = not fully implemented yet
+TODO = to be implemented
+OK = fully implemented
+
+Prog    : WIP
+Decl    : TODO
+Expr    : WIP
+AtomExpr: WIP
+AppExpr : TODO
+Const   : OK
+Comps   : OK
+MatchExpr   : TODO
+CondExpr    : TODO
+Args    : TODO
+Params  : TODO
+TypedVar: TODO
+AtomicType  : OK
+Types   : OK
+*)
