@@ -25,6 +25,7 @@
     | AtomType of plcType
     | Types of plcType list
     | Const of expr
+    | Comps of expr list
 
 (* Associativity *)
 %right SEMIC ARROW
@@ -36,16 +37,20 @@
 %noshift EOF
 
 (* Start symbol *)
-%start Expr
+%start Prog
 
 %verbose 
 
 %%
 
+Prog    :   Expr    (Expr)
+
 Expr    :   AtomExpr (AtomExpr)
+    |   Expr LBRACK NAT RBRACK (Item(NAT, Expr))
 
 AtomExpr:   Const (Const)
     |   NAME    (Var(NAME))
+    |   LPAR Comps RPAR (List(Comps))
     |   LPAR Expr RPAR (Expr)
 
 Const   :   TRUE    (ConB(true))
@@ -53,6 +58,9 @@ Const   :   TRUE    (ConB(true))
     |   NAT     (ConI(NAT))
     |   LPAR RPAR (List(nil))
     |   LPAR Type LBRACK RBRACK RPAR (ESeq(Type))
+
+Comps   :   Expr COMMA Expr (Expr1 :: (Expr2 :: nil))
+    |   Expr COMMA Comps (Expr :: Comps)
 
 Type    :   AtomType (AtomType)
     |   LPAR Types RPAR (ListT(Types))

@@ -24,6 +24,7 @@ fromString "15";
 fromString "true";
 fromString "()";
 fromString "([Bool] [])";
+fromString "(6,false)";
 fromString "(6,false)[1]";
 fromString "print x; true";
 fromString "3::7::t";
