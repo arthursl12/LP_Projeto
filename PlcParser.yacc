@@ -4,6 +4,28 @@
 
 %pos int
 
+(*
+CHECK-LIST:
+WIP = not fully implemented yet
+TODO = to be implemented
+OK = fully implemented
+
+Prog    : WIP
+Decl    : TODO
+Expr    : WIP
+AtomExpr: WIP
+AppExpr : TODO
+Const   : OK
+Comps   : OK
+MatchExpr   : TODO
+CondExpr    : TODO
+Args    : TODO
+Params  : OK
+TypedVar: OK
+AtomicType  : OK
+Types   : OK
+*)
+
 (* Tokens *)
 %term   VAR
 | PLUS | MINUS | MULTI | DIV | EQ
@@ -26,6 +48,8 @@
     | Types of plcType list
     | Const of expr
     | Comps of expr list
+    | TypedVar of plcType * expr
+    | Params of (plcType * expr) list
 
 (* Associativity *)
 %right SEMIC ARROW
@@ -62,6 +86,11 @@ Const   :   TRUE    (ConB(true))
 Comps   :   Expr COMMA Expr (Expr1 :: (Expr2 :: nil))
     |   Expr COMMA Comps (Expr :: Comps)
 
+Params  :   TypedVar ([TypedVar])
+    |   TypedVar COMMA Params (TypedVar :: Params)
+
+TypedVar    :   Type NAME ((Type,Var(NAME)))
+
 Type    :   AtomType (AtomType)
     |   LPAR Types RPAR (ListT(Types))
     |   LBRACK Type RBRACK (SeqT(Type))
@@ -74,26 +103,3 @@ AtomType:   NIL (ListT(nil))
 
 Types   :   Type COMMA Type (Type1 :: (Type2 :: nil))
     |   Type COMMA Types (Type :: Types)
-
-%%
-(*
-CHECK-LIST:
-WIP = not fully implemented yet
-TODO = to be implemented
-OK = fully implemented
-
-Prog    : WIP
-Decl    : TODO
-Expr    : WIP
-AtomExpr: WIP
-AppExpr : TODO
-Const   : OK
-Comps   : OK
-MatchExpr   : TODO
-CondExpr    : TODO
-Args    : TODO
-Params  : TODO
-TypedVar: TODO
-AtomicType  : OK
-Types   : OK
-*)

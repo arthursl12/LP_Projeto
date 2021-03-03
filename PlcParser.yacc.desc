@@ -1,3 +1,8 @@
+3 rules not reduced
+
+warning: rule <Params : TypedVar > will never be reduced
+warning: rule <Params : TypedVar COMMA Params > will never be reduced
+warning: rule <TypedVar : Type NAME > will never be reduced
 
 state 0:
 
@@ -132,11 +137,11 @@ state 10:
 
 state 11:
 
-	Type : AtomType .  (reduce by rule 14)
+	Type : AtomType .  (reduce by rule 17)
 
 
 
-	.	reduce by rule 14
+	.	reduce by rule 17
 
 
 state 12:
@@ -168,29 +173,29 @@ state 13:
 
 state 14:
 
-	AtomType : NIL .  (reduce by rule 18)
+	AtomType : NIL .  (reduce by rule 21)
 
 
 
-	.	reduce by rule 18
+	.	reduce by rule 21
 
 
 state 15:
 
-	AtomType : INT .  (reduce by rule 20)
+	AtomType : INT .  (reduce by rule 23)
 
 
 
-	.	reduce by rule 20
+	.	reduce by rule 23
 
 
 state 16:
 
-	AtomType : BOOL .  (reduce by rule 19)
+	AtomType : BOOL .  (reduce by rule 22)
 
 
 
-	.	reduce by rule 19
+	.	reduce by rule 22
 
 
 state 17:
@@ -401,12 +406,12 @@ state 31:
 state 32:
 
 	Type : Type . ARROW Type 
-	Type : Type ARROW Type .  (reduce by rule 17)
+	Type : Type ARROW Type .  (reduce by rule 20)
 
 	ARROW	shift 23
 
 
-	.	reduce by rule 17
+	.	reduce by rule 20
 
 
 state 33:
@@ -434,11 +439,11 @@ state 34:
 
 state 35:
 
-	Type : LBRACK Type RBRACK .  (reduce by rule 16)
+	Type : LBRACK Type RBRACK .  (reduce by rule 19)
 
 
 
-	.	reduce by rule 16
+	.	reduce by rule 19
 
 
 state 36:
@@ -458,20 +463,20 @@ state 36:
 
 state 37:
 
-	Type : LPAR Types RPAR .  (reduce by rule 15)
+	Type : LPAR Types RPAR .  (reduce by rule 18)
 
 
 
-	.	reduce by rule 15
+	.	reduce by rule 18
 
 
 state 38:
 
-	AtomType : LPAR Type RPAR .  (reduce by rule 21)
+	AtomType : LPAR Type RPAR .  (reduce by rule 24)
 
 
 
-	.	reduce by rule 21
+	.	reduce by rule 24
 
 
 state 39:
@@ -503,25 +508,25 @@ state 40:
 
 state 41:
 
-	Types : Type COMMA Types .  (reduce by rule 23)
+	Types : Type COMMA Types .  (reduce by rule 26)
 
 
 
-	.	reduce by rule 23
+	.	reduce by rule 26
 
 
 state 42:
 
 	Type : Type . ARROW Type 
 	Types : Type . COMMA Type 
-	Types : Type COMMA Type .  (reduce by rule 22)
+	Types : Type COMMA Type .  (reduce by rule 25)
 	Types : Type . COMMA Types 
 
 	COMMA	shift 39
 	ARROW	shift 23
 
 
-	.	reduce by rule 22
+	.	reduce by rule 25
 
 
 state 43:
