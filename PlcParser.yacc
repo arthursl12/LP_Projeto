@@ -39,11 +39,12 @@ Types   : OK
 | NAT of int
 | TRUE | FALSE
 | BOOL | INT | NIL
-| EOF
+| EOF 
+| VAR_TOKEN
 
 (* Non-terminals declarations *)
 %nonterm Prog of expr
-    | Decl of expr
+    | Decl of string * expr
     | Expr of expr
     | AtomExpr of expr
     | AppExpr of expr
@@ -81,6 +82,9 @@ Types   : OK
 %%
 
 Prog    :   Expr    (Expr)
+    |   Decl SEMIC Prog    (Let(#1(Decl), #2(Decl), Prog))
+
+Decl    :   VAR_TOKEN NAME EQ Expr ((NAME, Expr))
 
 Expr    :   AtomExpr (AtomExpr)
     |   IF Expr THEN Expr ELSE Expr (If(Expr1,Expr2,Expr3))

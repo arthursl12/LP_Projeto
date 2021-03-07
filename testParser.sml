@@ -20,6 +20,8 @@ open PlcFrontEnd;
 
 print "================Início=============\n";
 
+
+
 fromString "15";
 fromString "true";
 fromString "()";
@@ -49,10 +51,10 @@ fromString "(ise () = false)";
 fromString "if (x < y) then x else y";
 fromString "match x with | 0 -> 1| _ -> -1 end";
 
-
+fromString "var x = 9; x + 3";
+fromString "var x = 4; var y = 6; x + y";
 
 fromString "fn (Int x) => -x end";
-fromString "var x = 9; x + 3";
 fromString "fun f(Int x) = x; f(1)";
 fromFile ("example.plc");
 

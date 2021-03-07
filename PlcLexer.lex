@@ -29,6 +29,7 @@ fun keyword(s, lpos, rpos) =
         | "match" => MATCH(lpos, rpos)
         | "with" => WITH(lpos, rpos)
         | "end" => END(lpos, rpos)
+        | "var" => VAR_TOKEN(lpos, rpos)
         | "_" => UNDERLINE(lpos, rpos)
         | _     => NAME(s, lpos, rpos)
         
