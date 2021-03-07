@@ -16,10 +16,15 @@ val RBRACK:  'a * 'a -> (svalue,'a) token
 val LBRACK:  'a * 'a -> (svalue,'a) token
 val RPAR:  'a * 'a -> (svalue,'a) token
 val LPAR:  'a * 'a -> (svalue,'a) token
+val VBAR:  'a * 'a -> (svalue,'a) token
+val UNDERLINE:  'a * 'a -> (svalue,'a) token
 val DCOLON:  'a * 'a -> (svalue,'a) token
 val ARROW:  'a * 'a -> (svalue,'a) token
 val COMMA:  'a * 'a -> (svalue,'a) token
 val SEMIC:  'a * 'a -> (svalue,'a) token
+val WITH:  'a * 'a -> (svalue,'a) token
+val END:  'a * 'a -> (svalue,'a) token
+val MATCH:  'a * 'a -> (svalue,'a) token
 val ELSE:  'a * 'a -> (svalue,'a) token
 val THEN:  'a * 'a -> (svalue,'a) token
 val IF:  'a * 'a -> (svalue,'a) token

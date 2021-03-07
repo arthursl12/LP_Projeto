@@ -31,8 +31,9 @@ Types   : OK
 | PLUS | MINUS | MULTI | DIV | AND
 | PRINT | NOT | HEAD | TAIL | ISE
 | EQ | NEQ | LTE | LT
-| IF | THEN | ELSE
-| SEMIC | COMMA | ARROW | DCOLON
+| IF | THEN | ELSE 
+| MATCH | END | WITH
+| SEMIC | COMMA | ARROW | DCOLON | UNDERLINE | VBAR
 | LPAR | RPAR | LBRACK | RBRACK | LBRACE | RBRACE
 | NAME of string
 | NAT of int
@@ -53,6 +54,8 @@ Types   : OK
     | Comps of expr list
     | TypedVar of plcType * expr
     | Params of (plcType * expr) list
+    | CondExpr of expr option
+    | MatchExpr of (expr option * expr) list
 
 (* Associativity *)
 %right SEMIC ARROW
@@ -81,6 +84,7 @@ Prog    :   Expr    (Expr)
 
 Expr    :   AtomExpr (AtomExpr)
     |   IF Expr THEN Expr ELSE Expr (If(Expr1,Expr2,Expr3))
+    |   MATCH Expr WITH MatchExpr (Match(Expr, MatchExpr))
     |   NOT Expr (Prim1("!",Expr))
     |   MINUS Expr (Prim1("-",Expr))
     |   HEAD Expr (Prim1("hd",Expr))
@@ -100,8 +104,6 @@ Expr    :   AtomExpr (AtomExpr)
     |   Expr SEMIC Expr (Prim2(";",Expr1,Expr2))
     |   Expr LBRACK NAT RBRACK (Item(NAT, Expr))
 
-
-
 AtomExpr:   Const (Const)
     |   NAME    (Var(NAME))
     |   LPAR Comps RPAR (List(Comps))
@@ -117,6 +119,12 @@ Const   :   TRUE    (ConB(true))
 
 Comps   :   Expr COMMA Expr (Expr1 :: (Expr2 :: nil))
     |   Expr COMMA Comps (Expr :: Comps)
+
+MatchExpr   :   END    ([])
+    |   VBAR CondExpr ARROW Expr MatchExpr  ((CondExpr,Expr) :: MatchExpr)
+
+CondExpr:   Expr    (SOME(Expr))
+    |   UNDERLINE   (NONE)
 
 Params  :   TypedVar ([TypedVar])
     |   TypedVar COMMA Params (TypedVar :: Params)

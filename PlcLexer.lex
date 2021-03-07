@@ -26,6 +26,10 @@ fun keyword(s, lpos, rpos) =
         | "if" => IF(lpos, rpos)
         | "then" => THEN(lpos, rpos)
         | "else" => ELSE(lpos, rpos)
+        | "match" => MATCH(lpos, rpos)
+        | "with" => WITH(lpos, rpos)
+        | "end" => END(lpos, rpos)
+        | "_" => UNDERLINE(lpos, rpos)
         | _     => NAME(s, lpos, rpos)
         
 
@@ -71,6 +75,8 @@ whitespace = [\ \t];
 "{" => (LBRACE(yypos, yypos));
 "}" => (RBRACE(yypos, yypos));
 "," => (COMMA(yypos, yypos));
+"|" => (VBAR(yypos, yypos));
+
 "->" => (print "Arrow\n"; ARROW(yypos, yypos));
 
 "+" => (PLUS(yypos, yypos));
