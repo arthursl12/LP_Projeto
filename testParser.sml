@@ -20,6 +20,11 @@ open PlcFrontEnd;
 
 print "================Início=============\n";
 
+(* 
+fromString "()";
+fromString "(Int x, Int y)"; *)
+
+
 
 
 fromString "15";
@@ -53,6 +58,14 @@ fromString "match x with | 0 -> 1| _ -> -1 end";
 
 fromString "var x = 9; x + 3";
 fromString "var x = 4; var y = 6; x + y";
+
+fromString "f(1)";
+
+fromString "fun f(Int x) = x; f(1)";
+
+
+fromString "fun f(Int x) = x; f(1)";
+
 
 fromString "fn (Int x) => -x end";
 fromString "fun f(Int x) = x; f(1)";

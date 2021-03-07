@@ -40,11 +40,11 @@ Types   : OK
 | TRUE | FALSE
 | BOOL | INT | NIL
 | EOF 
-| VAR_TOKEN
+| VAR_TOKEN | FUN | REC
 
 (* Non-terminals declarations *)
 %nonterm Prog of expr
-    | Decl of string * expr
+    | Decl of string * string * expr * ((plcType * string) list) * plcType
     | Expr of expr
     | AtomExpr of expr
     | AppExpr of expr
@@ -53,21 +53,23 @@ Types   : OK
     | Types of plcType list
     | Const of expr
     | Comps of expr list
-    | TypedVar of plcType * expr
-    | Params of (plcType * expr) list
+    | TypedVar of plcType * string
+    | Params of (plcType * string) list
+    | Args of (plcType * string) list
     | CondExpr of expr option
     | MatchExpr of (expr option * expr) list
 
 (* Associativity *)
 %right SEMIC ARROW
+%nonassoc IF
+%left ELSE
 %left AND
 %left EQ NEQ
 %left LTE LT
 %right DCOLON
 %left PLUS MINUS
 %left MULTI DIV
-%nonassoc NOT HEAD TAIL ISE PRINT 
-
+%nonassoc NOT HEAD TAIL ISE PRINT FUN
 %left LBRACK
 
 (* Where to end parsing *)
@@ -79,14 +81,25 @@ Types   : OK
 
 %verbose 
 
+
+
 %%
 
 Prog    :   Expr    (Expr)
-    |   Decl SEMIC Prog    (Let(#1(Decl), #2(Decl), Prog))
+    |   Decl SEMIC Prog    (
+            case #1(Decl) of 
+               "var" => Let(#2(Decl), #3(Decl), Prog)
+            | "fun" => Let(#2(Decl), #3(Decl), Prog)
+            | "rec" => makeFun(#2(Decl), #4(Decl), #5(Decl) , #3(Decl), Prog)
+            )
 
-Decl    :   VAR_TOKEN NAME EQ Expr ((NAME, Expr))
+Decl    :   VAR_TOKEN NAME EQ Expr (("var", NAME, Expr, [], IntT))
+    |   FUN NAME Args EQ Expr (("fun",NAME,makeAnon(Args, Expr), [], IntT))
+    |   FUN REC NAME Args DCOLON Type EQ Expr (("rec", NAME, Expr, Args, Type))
+
 
 Expr    :   AtomExpr (AtomExpr)
+    |   AppExpr (AppExpr)
     |   IF Expr THEN Expr ELSE Expr (If(Expr1,Expr2,Expr3))
     |   MATCH Expr WITH MatchExpr (Match(Expr, MatchExpr))
     |   NOT Expr (Prim1("!",Expr))
@@ -115,6 +128,9 @@ AtomExpr:   Const (Const)
     |   LPAR Expr RPAR (Expr)
     |   LBRACE Prog RBRACE (Prog)
 
+AppExpr :   AtomExpr AtomExpr (Call(AtomExpr1, AtomExpr2))
+    |   AppExpr AtomExpr (Call(AppExpr, AtomExpr))
+
 Const   :   TRUE    (ConB(true))
     |   FALSE   (ConB(false))
     |   NAT     (ConI(NAT))
@@ -130,10 +146,13 @@ MatchExpr   :   END    ([])
 CondExpr:   Expr    (SOME(Expr))
     |   UNDERLINE   (NONE)
 
+Args    :   LPAR RPAR ([])
+    |   LPAR Params RPAR (Params)
+
 Params  :   TypedVar ([TypedVar])
     |   TypedVar COMMA Params (TypedVar :: Params)
 
-TypedVar    :   Type NAME ((Type,Var(NAME)))
+TypedVar    :   Type NAME ((Type,NAME))
 
 Type    :   AtomType (AtomType)
     |   LPAR Types RPAR (ListT(Types))

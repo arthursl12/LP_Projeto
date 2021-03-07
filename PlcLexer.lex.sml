@@ -34,6 +34,8 @@ fun keyword(s, lpos, rpos) =
         | "with" => WITH(lpos, rpos)
         | "end" => END(lpos, rpos)
         | "var" => VAR_TOKEN(lpos, rpos)
+        | "fun" => FUN(lpos,rpos)
+        | "rec" => REC(lpos,rpos)
         | "_" => UNDERLINE(lpos, rpos)
         | _     => NAME(s, lpos, rpos)
         

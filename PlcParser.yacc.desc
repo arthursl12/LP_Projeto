@@ -1,74 +1,66 @@
-22 reduce/reduce conflicts
-12 shift/reduce conflicts
+28 reduce/reduce conflicts
 start symbol used on the rhs of 2 rules
-4 rules not reduced
+1 rule not reduced
 
 warning: start symbol appears on the rhs of <Prog : Decl SEMIC Prog >
 warning: start symbol appears on the rhs of <AtomExpr : LBRACE Prog RBRACE >
 warning: rule <AtomExpr : LPAR Expr RPAR > will never be reduced
-warning: rule <Params : TypedVar > will never be reduced
-warning: rule <Params : TypedVar COMMA Params > will never be reduced
-warning: rule <TypedVar : Type NAME > will never be reduced
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on EOF
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on RBRACE
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on LBRACK
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on RPAR
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on VBAR
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on DCOLON
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on ARROW
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on COMMA
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on SEMIC
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on WITH
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on END
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on ELSE
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on THEN
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on LT
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on LTE
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on NEQ
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on EQ
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on AND
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on DIV
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on MULTI
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on MINUS
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on PLUS
-error:  state 102: shift/reduce conflict (shift LBRACK, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift DCOLON, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift SEMIC, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift LT, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift LTE, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift NEQ, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift EQ, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift AND, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift DIV, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift MULTI, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift MINUS, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift PLUS, reduce by rule 4)
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on EOF
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on FALSE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on TRUE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on NAT
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on NAME
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on RBRACE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LBRACE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LBRACK
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on RPAR
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LPAR
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on VBAR
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on DCOLON
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on ARROW
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on COMMA
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on SEMIC
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on WITH
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on END
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on ELSE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on THEN
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LT
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LTE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on NEQ
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on EQ
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on AND
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on DIV
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on MULTI
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on MINUS
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on PLUS
 
 state 0:
 
 	Prog : . Expr 
 	Prog : . Decl SEMIC Prog 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
-	VAR_TOKEN	shift 5
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
+	VAR_TOKEN	shift 7
+	FUN	shift 6
 
-	Prog	goto 105
-	Decl	goto 4
-	Expr	goto 3
-	AtomExpr	goto 2
+	Prog	goto 129
+	Decl	goto 5
+	Expr	goto 4
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -76,23 +68,50 @@ state 0:
 
 state 1:
 
-	AtomExpr : Const .  (reduce by rule 24)
+	AtomExpr : Const .  (reduce by rule 27)
 
 
 
-	.	reduce by rule 24
+	.	reduce by rule 27
 
 
 state 2:
 
-	Expr : AtomExpr .  (reduce by rule 3)
+	Expr : AppExpr .  (reduce by rule 6)
+	AppExpr : AppExpr . AtomExpr 
 
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
+	AtomExpr	goto 22
+	Const	goto 1
 
-	.	reduce by rule 3
+	.	reduce by rule 6
 
 
 state 3:
+
+	Expr : AtomExpr .  (reduce by rule 5)
+	AppExpr : AtomExpr . AtomExpr 
+
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
+
+	AtomExpr	goto 23
+	Const	goto 1
+
+	.	reduce by rule 5
+
+
+state 4:
 
 	Prog : Expr .  (reduce by rule 0)
 	Expr : Expr . AND Expr 
@@ -108,38 +127,28 @@ state 3:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	SEMIC	shift 22
-	DCOLON	shift 21
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	SEMIC	shift 26
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
 	.	reduce by rule 0
 
 
-state 4:
+state 5:
 
 	Prog : Decl . SEMIC Prog 
 
-	SEMIC	shift 32
-
-
-	.	error
-
-
-state 5:
-
-	Decl : VAR_TOKEN . NAME EQ Expr 
-
-	NAME	shift 33
+	SEMIC	shift 36
 
 
 	.	error
@@ -147,128 +156,88 @@ state 5:
 
 state 6:
 
-	Const : FALSE .  (reduce by rule 31)
+	Decl : FUN . NAME Args EQ Expr 
+	Decl : FUN . REC NAME Args DCOLON Type EQ Expr 
+
+	NAME	shift 38
+	REC	shift 37
 
 
-
-	.	reduce by rule 31
+	.	error
 
 
 state 7:
 
-	Const : TRUE .  (reduce by rule 30)
+	Decl : VAR_TOKEN . NAME EQ Expr 
+
+	NAME	shift 39
 
 
-
-	.	reduce by rule 30
+	.	error
 
 
 state 8:
 
-	Const : NAT .  (reduce by rule 32)
+	Const : FALSE .  (reduce by rule 36)
 
 
 
-	.	reduce by rule 32
+	.	reduce by rule 36
 
 
 state 9:
 
-	AtomExpr : NAME .  (reduce by rule 25)
+	Const : TRUE .  (reduce by rule 35)
 
 
 
-	.	reduce by rule 25
+	.	reduce by rule 35
 
 
 state 10:
 
-	AtomExpr : LBRACE . Prog RBRACE 
+	Const : NAT .  (reduce by rule 37)
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
-	VAR_TOKEN	shift 5
 
-	Prog	goto 34
-	Decl	goto 4
-	Expr	goto 3
-	AtomExpr	goto 2
-	Const	goto 1
 
-	.	error
+	.	reduce by rule 37
 
 
 state 11:
 
-	AtomExpr : LPAR . Comps RPAR 
-	AtomExpr : LPAR . Expr RPAR 
-	AtomExpr : LPAR . Expr RPAR 
-	Const : LPAR . RPAR 
-	Const : LPAR . Type LBRACK RBRACK RPAR 
+	AtomExpr : NAME .  (reduce by rule 28)
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 44
-	RPAR	shift 43
-	LBRACK	shift 42
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
-	BOOL	shift 41
-	INT	shift 40
-	NIL	shift 39
 
-	Expr	goto 38
-	AtomExpr	goto 2
-	Type	goto 37
-	AtomType	goto 36
-	Const	goto 1
-	Comps	goto 35
 
-	.	error
+	.	reduce by rule 28
 
 
 state 12:
 
-	Expr : MATCH . Expr WITH MatchExpr 
+	AtomExpr : LBRACE . Prog RBRACE 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
+	VAR_TOKEN	shift 7
+	FUN	shift 6
 
-	Expr	goto 45
-	AtomExpr	goto 2
+	Prog	goto 40
+	Decl	goto 5
+	Expr	goto 4
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -276,51 +245,65 @@ state 12:
 
 state 13:
 
-	Expr : IF . Expr THEN Expr ELSE Expr 
+	AtomExpr : LPAR . Comps RPAR 
+	AtomExpr : LPAR . Expr RPAR 
+	AtomExpr : LPAR . Expr RPAR 
+	Const : LPAR . RPAR 
+	Const : LPAR . Type LBRACK RBRACK RPAR 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 50
+	RPAR	shift 49
+	LBRACK	shift 48
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
+	BOOL	shift 47
+	INT	shift 46
+	NIL	shift 45
 
-	Expr	goto 46
-	AtomExpr	goto 2
+	Expr	goto 44
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Type	goto 43
+	AtomType	goto 42
 	Const	goto 1
+	Comps	goto 41
 
 	.	error
 
 
 state 14:
 
-	Expr : ISE . Expr 
+	Expr : MATCH . Expr WITH MatchExpr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 47
-	AtomExpr	goto 2
+	Expr	goto 51
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -328,25 +311,26 @@ state 14:
 
 state 15:
 
-	Expr : TAIL . Expr 
+	Expr : IF . Expr THEN Expr ELSE Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 48
-	AtomExpr	goto 2
+	Expr	goto 52
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -354,25 +338,26 @@ state 15:
 
 state 16:
 
-	Expr : HEAD . Expr 
+	Expr : ISE . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 49
-	AtomExpr	goto 2
+	Expr	goto 53
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -380,25 +365,26 @@ state 16:
 
 state 17:
 
-	Expr : NOT . Expr 
+	Expr : TAIL . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 50
-	AtomExpr	goto 2
+	Expr	goto 54
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -406,25 +392,26 @@ state 17:
 
 state 18:
 
-	Expr : PRINT . Expr 
+	Expr : HEAD . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 51
-	AtomExpr	goto 2
+	Expr	goto 55
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -432,25 +419,26 @@ state 18:
 
 state 19:
 
-	Expr : MINUS . Expr 
+	Expr : NOT . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 52
-	AtomExpr	goto 2
+	Expr	goto 56
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -458,35 +446,53 @@ state 19:
 
 state 20:
 
-	Expr : Expr LBRACK . NAT RBRACK 
+	Expr : PRINT . Expr 
 
-	NAT	shift 53
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
+	Expr	goto 57
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Const	goto 1
 
 	.	error
 
 
 state 21:
 
-	Expr : Expr DCOLON . Expr 
+	Expr : MINUS . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 54
-	AtomExpr	goto 2
+	Expr	goto 58
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -494,103 +500,54 @@ state 21:
 
 state 22:
 
-	Expr : Expr SEMIC . Expr 
+	AppExpr : AppExpr AtomExpr .  (reduce by rule 34)
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
 
-	Expr	goto 55
-	AtomExpr	goto 2
-	Const	goto 1
 
-	.	error
+	.	reduce by rule 34
 
 
 state 23:
 
-	Expr : Expr LT . Expr 
+	AppExpr : AtomExpr AtomExpr .  (reduce by rule 33)
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
 
-	Expr	goto 56
-	AtomExpr	goto 2
-	Const	goto 1
 
-	.	error
+	.	reduce by rule 33
 
 
 state 24:
 
-	Expr : Expr LTE . Expr 
+	Expr : Expr LBRACK . NAT RBRACK 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	NAT	shift 59
 
-	Expr	goto 57
-	AtomExpr	goto 2
-	Const	goto 1
 
 	.	error
 
 
 state 25:
 
-	Expr : Expr NEQ . Expr 
+	Expr : Expr DCOLON . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 58
-	AtomExpr	goto 2
+	Expr	goto 60
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -598,25 +555,26 @@ state 25:
 
 state 26:
 
-	Expr : Expr EQ . Expr 
+	Expr : Expr SEMIC . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 59
-	AtomExpr	goto 2
+	Expr	goto 61
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -624,25 +582,26 @@ state 26:
 
 state 27:
 
-	Expr : Expr AND . Expr 
+	Expr : Expr LT . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 60
-	AtomExpr	goto 2
+	Expr	goto 62
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -650,25 +609,26 @@ state 27:
 
 state 28:
 
-	Expr : Expr DIV . Expr 
+	Expr : Expr LTE . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 61
-	AtomExpr	goto 2
+	Expr	goto 63
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -676,25 +636,26 @@ state 28:
 
 state 29:
 
-	Expr : Expr MULTI . Expr 
+	Expr : Expr NEQ . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 62
-	AtomExpr	goto 2
+	Expr	goto 64
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -702,25 +663,26 @@ state 29:
 
 state 30:
 
-	Expr : Expr MINUS . Expr 
+	Expr : Expr EQ . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 63
-	AtomExpr	goto 2
+	Expr	goto 65
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -728,25 +690,26 @@ state 30:
 
 state 31:
 
-	Expr : Expr PLUS . Expr 
+	Expr : Expr AND . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 64
-	AtomExpr	goto 2
+	Expr	goto 66
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -754,28 +717,26 @@ state 31:
 
 state 32:
 
-	Prog : Decl SEMIC . Prog 
+	Expr : Expr DIV . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
-	VAR_TOKEN	shift 5
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Prog	goto 65
-	Decl	goto 4
-	Expr	goto 3
-	AtomExpr	goto 2
+	Expr	goto 67
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
@@ -783,56 +744,189 @@ state 32:
 
 state 33:
 
-	Decl : VAR_TOKEN NAME . EQ Expr 
+	Expr : Expr MULTI . Expr 
 
-	EQ	shift 66
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
+	Expr	goto 68
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Const	goto 1
 
 	.	error
 
 
 state 34:
 
-	AtomExpr : LBRACE Prog . RBRACE 
+	Expr : Expr MINUS . Expr 
 
-	RBRACE	shift 67
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
+	Expr	goto 69
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Const	goto 1
 
 	.	error
 
 
 state 35:
 
-	AtomExpr : LPAR Comps . RPAR 
+	Expr : Expr PLUS . Expr 
 
-	RPAR	shift 68
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
+	Expr	goto 70
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Const	goto 1
 
 	.	error
 
 
 state 36:
 
-	Type : AtomType .  (reduce by rule 44)
+	Prog : Decl SEMIC . Prog 
 
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
+	VAR_TOKEN	shift 7
+	FUN	shift 6
 
+	Prog	goto 71
+	Decl	goto 5
+	Expr	goto 4
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Const	goto 1
 
-	.	reduce by rule 44
+	.	error
 
 
 state 37:
 
-	Type : Type . ARROW Type 
-	Const : LPAR Type . LBRACK RBRACK RPAR 
+	Decl : FUN REC . NAME Args DCOLON Type EQ Expr 
 
-	ARROW	shift 70
-	LBRACK	shift 69
+	NAME	shift 72
 
 
 	.	error
 
 
 state 38:
+
+	Decl : FUN NAME . Args EQ Expr 
+
+	LPAR	shift 74
+
+	Args	goto 73
+
+	.	error
+
+
+state 39:
+
+	Decl : VAR_TOKEN NAME . EQ Expr 
+
+	EQ	shift 75
+
+
+	.	error
+
+
+state 40:
+
+	AtomExpr : LBRACE Prog . RBRACE 
+
+	RBRACE	shift 76
+
+
+	.	error
+
+
+state 41:
+
+	AtomExpr : LPAR Comps . RPAR 
+
+	RPAR	shift 77
+
+
+	.	error
+
+
+state 42:
+
+	Type : AtomType .  (reduce by rule 51)
+
+
+
+	.	reduce by rule 51
+
+
+state 43:
+
+	Type : Type . ARROW Type 
+	Const : LPAR Type . LBRACK RBRACK RPAR 
+
+	ARROW	shift 79
+	LBRACK	shift 78
+
+
+	.	error
+
+
+state 44:
 
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
@@ -851,78 +945,78 @@ state 38:
 	Comps : Expr . COMMA Expr 
 	Comps : Expr . COMMA Comps 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	SEMIC	shift 22
-	COMMA	shift 72
-	DCOLON	shift 21
-	RPAR	shift 71
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	SEMIC	shift 26
+	COMMA	shift 81
+	DCOLON	shift 25
+	RPAR	shift 80
+	LBRACK	shift 24
 
 
 	.	error
 
 
-state 39:
+state 45:
 
-	AtomType : NIL .  (reduce by rule 48)
-
-
-
-	.	reduce by rule 48
-
-
-state 40:
-
-	AtomType : INT .  (reduce by rule 50)
+	AtomType : NIL .  (reduce by rule 55)
 
 
 
-	.	reduce by rule 50
+	.	reduce by rule 55
 
 
-state 41:
+state 46:
 
-	AtomType : BOOL .  (reduce by rule 49)
-
-
-
-	.	reduce by rule 49
+	AtomType : INT .  (reduce by rule 57)
 
 
-state 42:
+
+	.	reduce by rule 57
+
+
+state 47:
+
+	AtomType : BOOL .  (reduce by rule 56)
+
+
+
+	.	reduce by rule 56
+
+
+state 48:
 
 	Type : LBRACK . Type RBRACK 
 
-	LPAR	shift 74
-	LBRACK	shift 42
-	BOOL	shift 41
-	INT	shift 40
-	NIL	shift 39
+	LPAR	shift 83
+	LBRACK	shift 48
+	BOOL	shift 47
+	INT	shift 46
+	NIL	shift 45
 
-	Type	goto 73
-	AtomType	goto 36
+	Type	goto 82
+	AtomType	goto 42
 
 	.	error
 
 
-state 43:
+state 49:
 
-	Const : LPAR RPAR .  (reduce by rule 33)
-
-
-
-	.	reduce by rule 33
+	Const : LPAR RPAR .  (reduce by rule 38)
 
 
-state 44:
+
+	.	reduce by rule 38
+
+
+state 50:
 
 	AtomExpr : LPAR . Comps RPAR 
 	AtomExpr : LPAR . Expr RPAR 
@@ -932,38 +1026,39 @@ state 44:
 	Const : LPAR . RPAR 
 	Const : LPAR . Type LBRACK RBRACK RPAR 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 44
-	RPAR	shift 43
-	LBRACK	shift 42
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
-	BOOL	shift 41
-	INT	shift 40
-	NIL	shift 39
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 50
+	RPAR	shift 49
+	LBRACK	shift 48
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
+	BOOL	shift 47
+	INT	shift 46
+	NIL	shift 45
 
-	Expr	goto 38
-	AtomExpr	goto 2
-	Type	goto 76
-	AtomType	goto 36
-	Types	goto 75
+	Expr	goto 44
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Type	goto 85
+	AtomType	goto 42
+	Types	goto 84
 	Const	goto 1
-	Comps	goto 35
+	Comps	goto 41
 
 	.	error
 
 
-state 45:
+state 51:
 
 	Expr : MATCH Expr . WITH MatchExpr 
 	Expr : Expr . AND Expr 
@@ -979,25 +1074,25 @@ state 45:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	WITH	shift 77
-	SEMIC	shift 22
-	DCOLON	shift 21
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	WITH	shift 86
+	SEMIC	shift 26
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
 	.	error
 
 
-state 46:
+state 52:
 
 	Expr : IF Expr . THEN Expr ELSE Expr 
 	Expr : Expr . AND Expr 
@@ -1013,27 +1108,27 @@ state 46:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	THEN	shift 78
-	SEMIC	shift 22
-	DCOLON	shift 21
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	THEN	shift 87
+	SEMIC	shift 26
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
 	.	error
 
 
-state 47:
+state 53:
 
-	Expr : ISE Expr .  (reduce by rule 10)
+	Expr : ISE Expr .  (reduce by rule 13)
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
 	Expr : Expr . MINUS Expr 
@@ -1047,15 +1142,15 @@ state 47:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	LBRACK	shift 20
+	LBRACK	shift 24
 
 
-	.	reduce by rule 10
+	.	reduce by rule 13
 
 
-state 48:
+state 54:
 
-	Expr : TAIL Expr .  (reduce by rule 9)
+	Expr : TAIL Expr .  (reduce by rule 12)
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
 	Expr : Expr . MINUS Expr 
@@ -1069,15 +1164,15 @@ state 48:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	LBRACK	shift 20
+	LBRACK	shift 24
 
 
-	.	reduce by rule 9
+	.	reduce by rule 12
 
 
-state 49:
+state 55:
 
-	Expr : HEAD Expr .  (reduce by rule 8)
+	Expr : HEAD Expr .  (reduce by rule 11)
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
 	Expr : Expr . MINUS Expr 
@@ -1091,59 +1186,15 @@ state 49:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	LBRACK	shift 20
-
-
-	.	reduce by rule 8
-
-
-state 50:
-
-	Expr : NOT Expr .  (reduce by rule 6)
-	Expr : Expr . AND Expr 
-	Expr : Expr . PLUS Expr 
-	Expr : Expr . MINUS Expr 
-	Expr : Expr . MULTI Expr 
-	Expr : Expr . DIV Expr 
-	Expr : Expr . EQ Expr 
-	Expr : Expr . NEQ Expr 
-	Expr : Expr . LT Expr 
-	Expr : Expr . LTE Expr 
-	Expr : Expr . DCOLON Expr 
-	Expr : Expr . SEMIC Expr 
-	Expr : Expr . LBRACK NAT RBRACK 
-
-	LBRACK	shift 20
-
-
-	.	reduce by rule 6
-
-
-state 51:
-
-	Expr : PRINT Expr .  (reduce by rule 11)
-	Expr : Expr . AND Expr 
-	Expr : Expr . PLUS Expr 
-	Expr : Expr . MINUS Expr 
-	Expr : Expr . MULTI Expr 
-	Expr : Expr . DIV Expr 
-	Expr : Expr . EQ Expr 
-	Expr : Expr . NEQ Expr 
-	Expr : Expr . LT Expr 
-	Expr : Expr . LTE Expr 
-	Expr : Expr . DCOLON Expr 
-	Expr : Expr . SEMIC Expr 
-	Expr : Expr . LBRACK NAT RBRACK 
-
-	LBRACK	shift 20
+	LBRACK	shift 24
 
 
 	.	reduce by rule 11
 
 
-state 52:
+state 56:
 
-	Expr : MINUS Expr .  (reduce by rule 7)
+	Expr : NOT Expr .  (reduce by rule 9)
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
 	Expr : Expr . MINUS Expr 
@@ -1157,200 +1208,71 @@ state 52:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	MULTI	shift 29
-	DIV	shift 28
-	LBRACK	shift 20
+	LBRACK	shift 24
 
 
-	.	reduce by rule 7
+	.	reduce by rule 9
 
 
-state 53:
+state 57:
+
+	Expr : PRINT Expr .  (reduce by rule 14)
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr . MINUS Expr 
+	Expr : Expr . MULTI Expr 
+	Expr : Expr . DIV Expr 
+	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+
+	LBRACK	shift 24
+
+
+	.	reduce by rule 14
+
+
+state 58:
+
+	Expr : MINUS Expr .  (reduce by rule 10)
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr . MINUS Expr 
+	Expr : Expr . MULTI Expr 
+	Expr : Expr . DIV Expr 
+	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+
+	MULTI	shift 33
+	DIV	shift 32
+	LBRACK	shift 24
+
+
+	.	reduce by rule 10
+
+
+state 59:
 
 	Expr : Expr LBRACK NAT . RBRACK 
 
-	RBRACK	shift 79
+	RBRACK	shift 88
 
 
 	.	error
 
 
-state 54:
-
-	Expr : Expr . AND Expr 
-	Expr : Expr . PLUS Expr 
-	Expr : Expr . MINUS Expr 
-	Expr : Expr . MULTI Expr 
-	Expr : Expr . DIV Expr 
-	Expr : Expr . EQ Expr 
-	Expr : Expr . NEQ Expr 
-	Expr : Expr . LT Expr 
-	Expr : Expr . LTE Expr 
-	Expr : Expr . DCOLON Expr 
-	Expr : Expr DCOLON Expr .  (reduce by rule 21)
-	Expr : Expr . SEMIC Expr 
-	Expr : Expr . LBRACK NAT RBRACK 
-
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	DCOLON	shift 21
-	LBRACK	shift 20
-
-
-	.	reduce by rule 21
-
-
-state 55:
-
-	Expr : Expr . AND Expr 
-	Expr : Expr . PLUS Expr 
-	Expr : Expr . MINUS Expr 
-	Expr : Expr . MULTI Expr 
-	Expr : Expr . DIV Expr 
-	Expr : Expr . EQ Expr 
-	Expr : Expr . NEQ Expr 
-	Expr : Expr . LT Expr 
-	Expr : Expr . LTE Expr 
-	Expr : Expr . DCOLON Expr 
-	Expr : Expr . SEMIC Expr 
-	Expr : Expr SEMIC Expr .  (reduce by rule 22)
-	Expr : Expr . LBRACK NAT RBRACK 
-
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	SEMIC	shift 22
-	DCOLON	shift 21
-	LBRACK	shift 20
-
-
-	.	reduce by rule 22
-
-
-state 56:
-
-	Expr : Expr . AND Expr 
-	Expr : Expr . PLUS Expr 
-	Expr : Expr . MINUS Expr 
-	Expr : Expr . MULTI Expr 
-	Expr : Expr . DIV Expr 
-	Expr : Expr . EQ Expr 
-	Expr : Expr . NEQ Expr 
-	Expr : Expr . LT Expr 
-	Expr : Expr LT Expr .  (reduce by rule 19)
-	Expr : Expr . LTE Expr 
-	Expr : Expr . DCOLON Expr 
-	Expr : Expr . SEMIC Expr 
-	Expr : Expr . LBRACK NAT RBRACK 
-
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	DCOLON	shift 21
-	LBRACK	shift 20
-
-
-	.	reduce by rule 19
-
-
-state 57:
-
-	Expr : Expr . AND Expr 
-	Expr : Expr . PLUS Expr 
-	Expr : Expr . MINUS Expr 
-	Expr : Expr . MULTI Expr 
-	Expr : Expr . DIV Expr 
-	Expr : Expr . EQ Expr 
-	Expr : Expr . NEQ Expr 
-	Expr : Expr . LT Expr 
-	Expr : Expr . LTE Expr 
-	Expr : Expr LTE Expr .  (reduce by rule 20)
-	Expr : Expr . DCOLON Expr 
-	Expr : Expr . SEMIC Expr 
-	Expr : Expr . LBRACK NAT RBRACK 
-
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	DCOLON	shift 21
-	LBRACK	shift 20
-
-
-	.	reduce by rule 20
-
-
-state 58:
-
-	Expr : Expr . AND Expr 
-	Expr : Expr . PLUS Expr 
-	Expr : Expr . MINUS Expr 
-	Expr : Expr . MULTI Expr 
-	Expr : Expr . DIV Expr 
-	Expr : Expr . EQ Expr 
-	Expr : Expr . NEQ Expr 
-	Expr : Expr NEQ Expr .  (reduce by rule 18)
-	Expr : Expr . LT Expr 
-	Expr : Expr . LTE Expr 
-	Expr : Expr . DCOLON Expr 
-	Expr : Expr . SEMIC Expr 
-	Expr : Expr . LBRACK NAT RBRACK 
-
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	LTE	shift 24
-	LT	shift 23
-	DCOLON	shift 21
-	LBRACK	shift 20
-
-
-	.	reduce by rule 18
-
-
-state 59:
-
-	Expr : Expr . AND Expr 
-	Expr : Expr . PLUS Expr 
-	Expr : Expr . MINUS Expr 
-	Expr : Expr . MULTI Expr 
-	Expr : Expr . DIV Expr 
-	Expr : Expr . EQ Expr 
-	Expr : Expr EQ Expr .  (reduce by rule 17)
-	Expr : Expr . NEQ Expr 
-	Expr : Expr . LT Expr 
-	Expr : Expr . LTE Expr 
-	Expr : Expr . DCOLON Expr 
-	Expr : Expr . SEMIC Expr 
-	Expr : Expr . LBRACK NAT RBRACK 
-
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	LTE	shift 24
-	LT	shift 23
-	DCOLON	shift 21
-	LBRACK	shift 20
-
-
-	.	reduce by rule 17
-
-
 state 60:
 
 	Expr : Expr . AND Expr 
-	Expr : Expr AND Expr .  (reduce by rule 12)
 	Expr : Expr . PLUS Expr 
 	Expr : Expr . MINUS Expr 
 	Expr : Expr . MULTI Expr 
@@ -1360,22 +1282,19 @@ state 60:
 	Expr : Expr . LT Expr 
 	Expr : Expr . LTE Expr 
 	Expr : Expr . DCOLON Expr 
+	Expr : Expr DCOLON Expr .  (reduce by rule 24)
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	DCOLON	shift 21
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
-	.	reduce by rule 12
+	.	reduce by rule 24
 
 
 state 61:
@@ -1385,19 +1304,30 @@ state 61:
 	Expr : Expr . MINUS Expr 
 	Expr : Expr . MULTI Expr 
 	Expr : Expr . DIV Expr 
-	Expr : Expr DIV Expr .  (reduce by rule 16)
 	Expr : Expr . EQ Expr 
 	Expr : Expr . NEQ Expr 
 	Expr : Expr . LT Expr 
 	Expr : Expr . LTE Expr 
 	Expr : Expr . DCOLON Expr 
 	Expr : Expr . SEMIC Expr 
+	Expr : Expr SEMIC Expr .  (reduce by rule 25)
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	SEMIC	shift 26
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
-	.	reduce by rule 16
+	.	reduce by rule 25
 
 
 state 62:
@@ -1406,20 +1336,25 @@ state 62:
 	Expr : Expr . PLUS Expr 
 	Expr : Expr . MINUS Expr 
 	Expr : Expr . MULTI Expr 
-	Expr : Expr MULTI Expr .  (reduce by rule 15)
 	Expr : Expr . DIV Expr 
 	Expr : Expr . EQ Expr 
 	Expr : Expr . NEQ Expr 
 	Expr : Expr . LT Expr 
+	Expr : Expr LT Expr .  (reduce by rule 22)
 	Expr : Expr . LTE Expr 
 	Expr : Expr . DCOLON Expr 
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
-	.	reduce by rule 15
+	.	reduce by rule 22
 
 
 state 63:
@@ -1427,10 +1362,66 @@ state 63:
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
 	Expr : Expr . MINUS Expr 
-	Expr : Expr MINUS Expr .  (reduce by rule 14)
 	Expr : Expr . MULTI Expr 
 	Expr : Expr . DIV Expr 
 	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr LTE Expr .  (reduce by rule 23)
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	DCOLON	shift 25
+	LBRACK	shift 24
+
+
+	.	reduce by rule 23
+
+
+state 64:
+
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr . MINUS Expr 
+	Expr : Expr . MULTI Expr 
+	Expr : Expr . DIV Expr 
+	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr NEQ Expr .  (reduce by rule 21)
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	LTE	shift 28
+	LT	shift 27
+	DCOLON	shift 25
+	LBRACK	shift 24
+
+
+	.	reduce by rule 21
+
+
+state 65:
+
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr . MINUS Expr 
+	Expr : Expr . MULTI Expr 
+	Expr : Expr . DIV Expr 
+	Expr : Expr . EQ Expr 
+	Expr : Expr EQ Expr .  (reduce by rule 20)
 	Expr : Expr . NEQ Expr 
 	Expr : Expr . LT Expr 
 	Expr : Expr . LTE Expr 
@@ -1438,19 +1429,24 @@ state 63:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	MULTI	shift 29
-	DIV	shift 28
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	LTE	shift 28
+	LT	shift 27
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
-	.	reduce by rule 14
+	.	reduce by rule 20
 
 
-state 64:
+state 66:
 
 	Expr : Expr . AND Expr 
+	Expr : Expr AND Expr .  (reduce by rule 15)
 	Expr : Expr . PLUS Expr 
-	Expr : Expr PLUS Expr .  (reduce by rule 13)
 	Expr : Expr . MINUS Expr 
 	Expr : Expr . MULTI Expr 
 	Expr : Expr . DIV Expr 
@@ -1462,15 +1458,114 @@ state 64:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	MULTI	shift 29
-	DIV	shift 28
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
-	.	reduce by rule 13
+	.	reduce by rule 15
 
 
-state 65:
+state 67:
+
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr . MINUS Expr 
+	Expr : Expr . MULTI Expr 
+	Expr : Expr . DIV Expr 
+	Expr : Expr DIV Expr .  (reduce by rule 19)
+	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+
+	LBRACK	shift 24
+
+
+	.	reduce by rule 19
+
+
+state 68:
+
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr . MINUS Expr 
+	Expr : Expr . MULTI Expr 
+	Expr : Expr MULTI Expr .  (reduce by rule 18)
+	Expr : Expr . DIV Expr 
+	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+
+	LBRACK	shift 24
+
+
+	.	reduce by rule 18
+
+
+state 69:
+
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr . MINUS Expr 
+	Expr : Expr MINUS Expr .  (reduce by rule 17)
+	Expr : Expr . MULTI Expr 
+	Expr : Expr . DIV Expr 
+	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+
+	MULTI	shift 33
+	DIV	shift 32
+	LBRACK	shift 24
+
+
+	.	reduce by rule 17
+
+
+state 70:
+
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr PLUS Expr .  (reduce by rule 16)
+	Expr : Expr . MINUS Expr 
+	Expr : Expr . MULTI Expr 
+	Expr : Expr . DIV Expr 
+	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+
+	MULTI	shift 33
+	DIV	shift 32
+	LBRACK	shift 24
+
+
+	.	reduce by rule 16
+
+
+state 71:
 
 	Prog : Decl SEMIC Prog .  (reduce by rule 1)
 
@@ -1479,165 +1574,22 @@ state 65:
 	.	reduce by rule 1
 
 
-state 66:
-
-	Decl : VAR_TOKEN NAME EQ . Expr 
-
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
-
-	Expr	goto 80
-	AtomExpr	goto 2
-	Const	goto 1
-
-	.	error
-
-
-state 67:
-
-	AtomExpr : LBRACE Prog RBRACE .  (reduce by rule 29)
-
-
-
-	.	reduce by rule 29
-
-
-state 68:
-
-	AtomExpr : LPAR Comps RPAR .  (reduce by rule 26)
-
-
-
-	.	reduce by rule 26
-
-
-state 69:
-
-	Const : LPAR Type LBRACK . RBRACK RPAR 
-
-	RBRACK	shift 81
-
-
-	.	error
-
-
-state 70:
-
-	Type : Type ARROW . Type 
-
-	LPAR	shift 74
-	LBRACK	shift 42
-	BOOL	shift 41
-	INT	shift 40
-	NIL	shift 39
-
-	Type	goto 82
-	AtomType	goto 36
-
-	.	error
-
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on EOF
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on RBRACE
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on LBRACK
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on RPAR
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on VBAR
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on DCOLON
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on ARROW
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on COMMA
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on SEMIC
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on WITH
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on END
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on ELSE
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on THEN
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on LT
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on LTE
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on NEQ
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on EQ
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on AND
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on DIV
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on MULTI
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on MINUS
-error:  state 71: reduce/reduce conflict between rule 28 and rule 27 on PLUS
-
-state 71:
-
-	AtomExpr : LPAR Expr RPAR .  (reduce by rule 27)
-	AtomExpr : LPAR Expr RPAR .  (reduce by rule 28)
-
-	PLUS	reduce by rule 27
-	MINUS	reduce by rule 27
-	MULTI	reduce by rule 27
-	DIV	reduce by rule 27
-	AND	reduce by rule 27
-	EQ	reduce by rule 27
-	NEQ	reduce by rule 27
-	LTE	reduce by rule 27
-	LT	reduce by rule 27
-	THEN	reduce by rule 27
-	ELSE	reduce by rule 27
-	END	reduce by rule 27
-	WITH	reduce by rule 27
-	SEMIC	reduce by rule 27
-	COMMA	reduce by rule 27
-	ARROW	reduce by rule 27
-	DCOLON	reduce by rule 27
-	VBAR	reduce by rule 27
-	RPAR	reduce by rule 27
-	LBRACK	reduce by rule 27
-	RBRACE	reduce by rule 27
-	EOF	reduce by rule 27
-
-
-	.	error
-
-
 state 72:
 
-	Comps : Expr COMMA . Expr 
-	Comps : Expr COMMA . Comps 
+	Decl : FUN REC NAME . Args DCOLON Type EQ Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	LPAR	shift 74
 
-	Expr	goto 84
-	AtomExpr	goto 2
-	Const	goto 1
-	Comps	goto 83
+	Args	goto 89
 
 	.	error
 
 
 state 73:
 
-	Type : LBRACK Type . RBRACK 
-	Type : Type . ARROW Type 
+	Decl : FUN NAME Args . EQ Expr 
 
-	ARROW	shift 70
-	RBRACK	shift 85
+	EQ	shift 90
 
 
 	.	error
@@ -1645,33 +1597,231 @@ state 73:
 
 state 74:
 
-	Type : LPAR . Types RPAR 
-	AtomType : LPAR . Type RPAR 
+	Args : LPAR . RPAR 
+	Args : LPAR . Params RPAR 
 
-	LPAR	shift 74
-	LBRACK	shift 42
-	BOOL	shift 41
-	INT	shift 40
-	NIL	shift 39
+	LPAR	shift 83
+	RPAR	shift 94
+	LBRACK	shift 48
+	BOOL	shift 47
+	INT	shift 46
+	NIL	shift 45
 
-	Type	goto 86
-	AtomType	goto 36
-	Types	goto 75
+	Type	goto 93
+	AtomType	goto 42
+	TypedVar	goto 92
+	Params	goto 91
 
 	.	error
 
 
 state 75:
 
-	Type : LPAR Types . RPAR 
+	Decl : VAR_TOKEN NAME EQ . Expr 
 
-	RPAR	shift 87
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
+	Expr	goto 95
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Const	goto 1
 
 	.	error
 
 
 state 76:
+
+	AtomExpr : LBRACE Prog RBRACE .  (reduce by rule 32)
+
+
+
+	.	reduce by rule 32
+
+
+state 77:
+
+	AtomExpr : LPAR Comps RPAR .  (reduce by rule 29)
+
+
+
+	.	reduce by rule 29
+
+
+state 78:
+
+	Const : LPAR Type LBRACK . RBRACK RPAR 
+
+	RBRACK	shift 96
+
+
+	.	error
+
+
+state 79:
+
+	Type : Type ARROW . Type 
+
+	LPAR	shift 83
+	LBRACK	shift 48
+	BOOL	shift 47
+	INT	shift 46
+	NIL	shift 45
+
+	Type	goto 97
+	AtomType	goto 42
+
+	.	error
+
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on EOF
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on FALSE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on TRUE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on NAT
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on NAME
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on RBRACE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LBRACE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LBRACK
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on RPAR
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LPAR
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on VBAR
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on DCOLON
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on ARROW
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on COMMA
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on SEMIC
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on WITH
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on END
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on ELSE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on THEN
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LT
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on LTE
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on NEQ
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on EQ
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on AND
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on DIV
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on MULTI
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on MINUS
+error:  state 80: reduce/reduce conflict between rule 31 and rule 30 on PLUS
+
+state 80:
+
+	AtomExpr : LPAR Expr RPAR .  (reduce by rule 30)
+	AtomExpr : LPAR Expr RPAR .  (reduce by rule 31)
+
+	PLUS	reduce by rule 30
+	MINUS	reduce by rule 30
+	MULTI	reduce by rule 30
+	DIV	reduce by rule 30
+	AND	reduce by rule 30
+	EQ	reduce by rule 30
+	NEQ	reduce by rule 30
+	LTE	reduce by rule 30
+	LT	reduce by rule 30
+	THEN	reduce by rule 30
+	ELSE	reduce by rule 30
+	END	reduce by rule 30
+	WITH	reduce by rule 30
+	SEMIC	reduce by rule 30
+	COMMA	reduce by rule 30
+	ARROW	reduce by rule 30
+	DCOLON	reduce by rule 30
+	VBAR	reduce by rule 30
+	LPAR	reduce by rule 30
+	RPAR	reduce by rule 30
+	LBRACK	reduce by rule 30
+	LBRACE	reduce by rule 30
+	RBRACE	reduce by rule 30
+	NAME	reduce by rule 30
+	NAT	reduce by rule 30
+	TRUE	reduce by rule 30
+	FALSE	reduce by rule 30
+	EOF	reduce by rule 30
+
+
+	.	error
+
+
+state 81:
+
+	Comps : Expr COMMA . Expr 
+	Comps : Expr COMMA . Comps 
+
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
+
+	Expr	goto 99
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Const	goto 1
+	Comps	goto 98
+
+	.	error
+
+
+state 82:
+
+	Type : LBRACK Type . RBRACK 
+	Type : Type . ARROW Type 
+
+	ARROW	shift 79
+	RBRACK	shift 100
+
+
+	.	error
+
+
+state 83:
+
+	Type : LPAR . Types RPAR 
+	AtomType : LPAR . Type RPAR 
+
+	LPAR	shift 83
+	LBRACK	shift 48
+	BOOL	shift 47
+	INT	shift 46
+	NIL	shift 45
+
+	Type	goto 101
+	AtomType	goto 42
+	Types	goto 84
+
+	.	error
+
+
+state 84:
+
+	Type : LPAR Types . RPAR 
+
+	RPAR	shift 102
+
+
+	.	error
+
+
+state 85:
 
 	Type : Type . ARROW Type 
 	AtomType : LPAR Type . RPAR 
@@ -1679,63 +1829,143 @@ state 76:
 	Types : Type . COMMA Types 
 	Const : LPAR Type . LBRACK RBRACK RPAR 
 
-	COMMA	shift 89
-	ARROW	shift 70
-	RPAR	shift 88
-	LBRACK	shift 69
+	COMMA	shift 104
+	ARROW	shift 79
+	RPAR	shift 103
+	LBRACK	shift 78
 
 
 	.	error
 
 
-state 77:
+state 86:
 
 	Expr : MATCH Expr WITH . MatchExpr 
 
-	END	shift 92
-	VBAR	shift 91
+	END	shift 107
+	VBAR	shift 106
 
-	MatchExpr	goto 90
+	MatchExpr	goto 105
 
 	.	error
 
 
-state 78:
+state 87:
 
 	Expr : IF Expr THEN . Expr ELSE Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 93
-	AtomExpr	goto 2
+	Expr	goto 108
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
 
 
-state 79:
+state 88:
 
-	Expr : Expr LBRACK NAT RBRACK .  (reduce by rule 23)
-
-
-
-	.	reduce by rule 23
+	Expr : Expr LBRACK NAT RBRACK .  (reduce by rule 26)
 
 
-state 80:
+
+	.	reduce by rule 26
+
+
+state 89:
+
+	Decl : FUN REC NAME Args . DCOLON Type EQ Expr 
+
+	DCOLON	shift 109
+
+
+	.	error
+
+
+state 90:
+
+	Decl : FUN NAME Args EQ . Expr 
+
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
+
+	Expr	goto 110
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Const	goto 1
+
+	.	error
+
+
+state 91:
+
+	Args : LPAR Params . RPAR 
+
+	RPAR	shift 111
+
+
+	.	error
+
+
+state 92:
+
+	Params : TypedVar .  (reduce by rule 48)
+	Params : TypedVar . COMMA Params 
+
+	COMMA	shift 112
+
+
+	.	reduce by rule 48
+
+
+state 93:
+
+	Type : Type . ARROW Type 
+	TypedVar : Type . NAME 
+
+	ARROW	shift 79
+	NAME	shift 113
+
+
+	.	error
+
+
+state 94:
+
+	Args : LPAR RPAR .  (reduce by rule 46)
+
+
+
+	.	reduce by rule 46
+
+
+state 95:
 
 	Decl : VAR_TOKEN NAME EQ Expr .  (reduce by rule 2)
 	Expr : Expr . AND Expr 
@@ -1751,53 +1981,53 @@ state 80:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	DCOLON	shift 21
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
 	.	reduce by rule 2
 
 
-state 81:
+state 96:
 
 	Const : LPAR Type LBRACK RBRACK . RPAR 
 
-	RPAR	shift 94
+	RPAR	shift 114
 
 
 	.	error
 
 
-state 82:
+state 97:
 
 	Type : Type . ARROW Type 
-	Type : Type ARROW Type .  (reduce by rule 47)
+	Type : Type ARROW Type .  (reduce by rule 54)
 
-	ARROW	shift 70
-
-
-	.	reduce by rule 47
+	ARROW	shift 79
 
 
-state 83:
-
-	Comps : Expr COMMA Comps .  (reduce by rule 36)
+	.	reduce by rule 54
 
 
+state 98:
 
-	.	reduce by rule 36
+	Comps : Expr COMMA Comps .  (reduce by rule 41)
 
 
-state 84:
+
+	.	reduce by rule 41
+
+
+state 99:
 
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
@@ -1812,134 +2042,135 @@ state 84:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 	Comps : Expr . COMMA Expr 
-	Comps : Expr COMMA Expr .  (reduce by rule 35)
+	Comps : Expr COMMA Expr .  (reduce by rule 40)
 	Comps : Expr . COMMA Comps 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	SEMIC	shift 22
-	COMMA	shift 72
-	DCOLON	shift 21
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	SEMIC	shift 26
+	COMMA	shift 81
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
-	.	reduce by rule 35
+	.	reduce by rule 40
 
 
-state 85:
+state 100:
 
-	Type : LBRACK Type RBRACK .  (reduce by rule 46)
-
-
-
-	.	reduce by rule 46
+	Type : LBRACK Type RBRACK .  (reduce by rule 53)
 
 
-state 86:
+
+	.	reduce by rule 53
+
+
+state 101:
 
 	Type : Type . ARROW Type 
 	AtomType : LPAR Type . RPAR 
 	Types : Type . COMMA Type 
 	Types : Type . COMMA Types 
 
-	COMMA	shift 89
-	ARROW	shift 70
-	RPAR	shift 88
+	COMMA	shift 104
+	ARROW	shift 79
+	RPAR	shift 103
 
 
 	.	error
 
 
-state 87:
+state 102:
 
-	Type : LPAR Types RPAR .  (reduce by rule 45)
-
-
-
-	.	reduce by rule 45
-
-
-state 88:
-
-	AtomType : LPAR Type RPAR .  (reduce by rule 51)
+	Type : LPAR Types RPAR .  (reduce by rule 52)
 
 
 
-	.	reduce by rule 51
+	.	reduce by rule 52
 
 
-state 89:
+state 103:
+
+	AtomType : LPAR Type RPAR .  (reduce by rule 58)
+
+
+
+	.	reduce by rule 58
+
+
+state 104:
 
 	Types : Type COMMA . Type 
 	Types : Type COMMA . Types 
 
-	LPAR	shift 74
-	LBRACK	shift 42
-	BOOL	shift 41
-	INT	shift 40
-	NIL	shift 39
+	LPAR	shift 83
+	LBRACK	shift 48
+	BOOL	shift 47
+	INT	shift 46
+	NIL	shift 45
 
-	Type	goto 96
-	AtomType	goto 36
-	Types	goto 95
+	Type	goto 116
+	AtomType	goto 42
+	Types	goto 115
 
 	.	error
 
 
-state 90:
+state 105:
 
-	Expr : MATCH Expr WITH MatchExpr .  (reduce by rule 5)
-
-
-
-	.	reduce by rule 5
+	Expr : MATCH Expr WITH MatchExpr .  (reduce by rule 8)
 
 
-state 91:
+
+	.	reduce by rule 8
+
+
+state 106:
 
 	MatchExpr : VBAR . CondExpr ARROW Expr MatchExpr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	UNDERLINE	shift 99
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	UNDERLINE	shift 119
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 98
-	AtomExpr	goto 2
+	Expr	goto 118
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
-	CondExpr	goto 97
+	CondExpr	goto 117
 
 	.	error
 
 
-state 92:
+state 107:
 
-	MatchExpr : END .  (reduce by rule 37)
-
-
-
-	.	reduce by rule 37
+	MatchExpr : END .  (reduce by rule 42)
 
 
-state 93:
+
+	.	reduce by rule 42
+
+
+state 108:
 
 	Expr : IF Expr THEN Expr . ELSE Expr 
 	Expr : Expr . AND Expr 
@@ -1955,68 +2186,43 @@ state 93:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	ELSE	shift 100
-	SEMIC	shift 22
-	DCOLON	shift 21
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	ELSE	shift 120
+	SEMIC	shift 26
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
 	.	error
 
 
-state 94:
+state 109:
 
-	Const : LPAR Type LBRACK RBRACK RPAR .  (reduce by rule 34)
+	Decl : FUN REC NAME Args DCOLON . Type EQ Expr 
 
+	LPAR	shift 83
+	LBRACK	shift 48
+	BOOL	shift 47
+	INT	shift 46
+	NIL	shift 45
 
-
-	.	reduce by rule 34
-
-
-state 95:
-
-	Types : Type COMMA Types .  (reduce by rule 53)
-
-
-
-	.	reduce by rule 53
-
-
-state 96:
-
-	Type : Type . ARROW Type 
-	Types : Type . COMMA Type 
-	Types : Type COMMA Type .  (reduce by rule 52)
-	Types : Type . COMMA Types 
-
-	COMMA	shift 89
-	ARROW	shift 70
-
-
-	.	reduce by rule 52
-
-
-state 97:
-
-	MatchExpr : VBAR CondExpr . ARROW Expr MatchExpr 
-
-	ARROW	shift 101
-
+	Type	goto 121
+	AtomType	goto 42
 
 	.	error
 
 
-state 98:
+state 110:
 
+	Decl : FUN NAME Args EQ Expr .  (reduce by rule 3)
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
 	Expr : Expr . MINUS Expr 
@@ -2029,101 +2235,221 @@ state 98:
 	Expr : Expr . DCOLON Expr 
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
-	CondExpr : Expr .  (reduce by rule 39)
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	SEMIC	shift 22
-	DCOLON	shift 21
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	DCOLON	shift 25
+	LBRACK	shift 24
+
+
+	.	reduce by rule 3
+
+
+state 111:
+
+	Args : LPAR Params RPAR .  (reduce by rule 47)
+
+
+
+	.	reduce by rule 47
+
+
+state 112:
+
+	Params : TypedVar COMMA . Params 
+
+	LPAR	shift 83
+	LBRACK	shift 48
+	BOOL	shift 47
+	INT	shift 46
+	NIL	shift 45
+
+	Type	goto 93
+	AtomType	goto 42
+	TypedVar	goto 92
+	Params	goto 122
+
+	.	error
+
+
+state 113:
+
+	TypedVar : Type NAME .  (reduce by rule 50)
+
+
+
+	.	reduce by rule 50
+
+
+state 114:
+
+	Const : LPAR Type LBRACK RBRACK RPAR .  (reduce by rule 39)
+
 
 
 	.	reduce by rule 39
 
 
-state 99:
+state 115:
 
-	CondExpr : UNDERLINE .  (reduce by rule 40)
-
-
-
-	.	reduce by rule 40
+	Types : Type COMMA Types .  (reduce by rule 60)
 
 
-state 100:
+
+	.	reduce by rule 60
+
+
+state 116:
+
+	Type : Type . ARROW Type 
+	Types : Type . COMMA Type 
+	Types : Type COMMA Type .  (reduce by rule 59)
+	Types : Type . COMMA Types 
+
+	COMMA	shift 104
+	ARROW	shift 79
+
+
+	.	reduce by rule 59
+
+
+state 117:
+
+	MatchExpr : VBAR CondExpr . ARROW Expr MatchExpr 
+
+	ARROW	shift 123
+
+
+	.	error
+
+
+state 118:
+
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr . MINUS Expr 
+	Expr : Expr . MULTI Expr 
+	Expr : Expr . DIV Expr 
+	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+	CondExpr : Expr .  (reduce by rule 44)
+
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	SEMIC	shift 26
+	DCOLON	shift 25
+	LBRACK	shift 24
+
+
+	.	reduce by rule 44
+
+
+state 119:
+
+	CondExpr : UNDERLINE .  (reduce by rule 45)
+
+
+
+	.	reduce by rule 45
+
+
+state 120:
 
 	Expr : IF Expr THEN Expr ELSE . Expr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 102
-	AtomExpr	goto 2
+	Expr	goto 124
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
 
 
-state 101:
+state 121:
+
+	Decl : FUN REC NAME Args DCOLON Type . EQ Expr 
+	Type : Type . ARROW Type 
+
+	EQ	shift 125
+	ARROW	shift 79
+
+
+	.	error
+
+
+state 122:
+
+	Params : TypedVar COMMA Params .  (reduce by rule 49)
+
+
+
+	.	reduce by rule 49
+
+
+state 123:
 
 	MatchExpr : VBAR CondExpr ARROW . Expr MatchExpr 
 
-	MINUS	shift 19
-	PRINT	shift 18
-	NOT	shift 17
-	HEAD	shift 16
-	TAIL	shift 15
-	ISE	shift 14
-	IF	shift 13
-	MATCH	shift 12
-	LPAR	shift 11
-	LBRACE	shift 10
-	NAME	shift 9
-	NAT	shift 8
-	TRUE	shift 7
-	FALSE	shift 6
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
 
-	Expr	goto 103
-	AtomExpr	goto 2
+	Expr	goto 126
+	AtomExpr	goto 3
+	AppExpr	goto 2
 	Const	goto 1
 
 	.	error
 
-error:  state 102: shift/reduce conflict (shift LBRACK, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift DCOLON, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift SEMIC, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift LT, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift LTE, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift NEQ, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift EQ, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift AND, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift DIV, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift MULTI, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift MINUS, reduce by rule 4)
-error:  state 102: shift/reduce conflict (shift PLUS, reduce by rule 4)
 
-state 102:
+state 124:
 
-	Expr : IF Expr THEN Expr ELSE Expr .  (reduce by rule 4)
+	Expr : IF Expr THEN Expr ELSE Expr .  (reduce by rule 7)
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
 	Expr : Expr . MINUS Expr 
@@ -2137,24 +2463,50 @@ state 102:
 	Expr : Expr . SEMIC Expr 
 	Expr : Expr . LBRACK NAT RBRACK 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	SEMIC	shift 22
-	DCOLON	shift 21
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	DCOLON	shift 25
+	LBRACK	shift 24
 
 
-	.	reduce by rule 4
+	.	reduce by rule 7
 
 
-state 103:
+state 125:
+
+	Decl : FUN REC NAME Args DCOLON Type EQ . Expr 
+
+	MINUS	shift 21
+	PRINT	shift 20
+	NOT	shift 19
+	HEAD	shift 18
+	TAIL	shift 17
+	ISE	shift 16
+	IF	shift 15
+	MATCH	shift 14
+	LPAR	shift 13
+	LBRACE	shift 12
+	NAME	shift 11
+	NAT	shift 10
+	TRUE	shift 9
+	FALSE	shift 8
+
+	Expr	goto 127
+	AtomExpr	goto 3
+	AppExpr	goto 2
+	Const	goto 1
+
+	.	error
+
+
+state 126:
 
 	Expr : Expr . AND Expr 
 	Expr : Expr . PLUS Expr 
@@ -2170,36 +2522,68 @@ state 103:
 	Expr : Expr . LBRACK NAT RBRACK 
 	MatchExpr : VBAR CondExpr ARROW Expr . MatchExpr 
 
-	PLUS	shift 31
-	MINUS	shift 30
-	MULTI	shift 29
-	DIV	shift 28
-	AND	shift 27
-	EQ	shift 26
-	NEQ	shift 25
-	LTE	shift 24
-	LT	shift 23
-	END	shift 92
-	SEMIC	shift 22
-	DCOLON	shift 21
-	VBAR	shift 91
-	LBRACK	shift 20
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	END	shift 107
+	SEMIC	shift 26
+	DCOLON	shift 25
+	VBAR	shift 106
+	LBRACK	shift 24
 
-	MatchExpr	goto 104
+	MatchExpr	goto 128
 
 	.	error
 
 
-state 104:
+state 127:
 
-	MatchExpr : VBAR CondExpr ARROW Expr MatchExpr .  (reduce by rule 38)
+	Decl : FUN REC NAME Args DCOLON Type EQ Expr .  (reduce by rule 4)
+	Expr : Expr . AND Expr 
+	Expr : Expr . PLUS Expr 
+	Expr : Expr . MINUS Expr 
+	Expr : Expr . MULTI Expr 
+	Expr : Expr . DIV Expr 
+	Expr : Expr . EQ Expr 
+	Expr : Expr . NEQ Expr 
+	Expr : Expr . LT Expr 
+	Expr : Expr . LTE Expr 
+	Expr : Expr . DCOLON Expr 
+	Expr : Expr . SEMIC Expr 
+	Expr : Expr . LBRACK NAT RBRACK 
+
+	PLUS	shift 35
+	MINUS	shift 34
+	MULTI	shift 33
+	DIV	shift 32
+	AND	shift 31
+	EQ	shift 30
+	NEQ	shift 29
+	LTE	shift 28
+	LT	shift 27
+	DCOLON	shift 25
+	LBRACK	shift 24
+
+
+	.	reduce by rule 4
+
+
+state 128:
+
+	MatchExpr : VBAR CondExpr ARROW Expr MatchExpr .  (reduce by rule 43)
 
 
 
-	.	reduce by rule 38
+	.	reduce by rule 43
 
 
-state 105:
+state 129:
 
 
 	EOF	accept
@@ -2207,5 +2591,5 @@ state 105:
 
 	.	error
 
-317 of 809 action table entries left after compaction
-117 goto table entries
+375 of 932 action table entries left after compaction
+171 goto table entries
