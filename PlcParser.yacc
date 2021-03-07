@@ -10,16 +10,16 @@ WIP = not fully implemented yet
 TODO = to be implemented
 OK = fully implemented
 
-Prog    : WIP
-Decl    : TODO
-Expr    : WIP
-AtomExpr: WIP
-AppExpr : TODO
+Prog    : OK
+Decl    : OK
+Expr    : OK
+AtomExpr: OK
+AppExpr : OK
 Const   : OK
 Comps   : OK
-MatchExpr   : TODO
-CondExpr    : TODO
-Args    : TODO
+MatchExpr   : OK
+CondExpr    : OK
+Args    : OK
 Params  : OK
 TypedVar: OK
 AtomicType  : OK
@@ -33,14 +33,14 @@ Types   : OK
 | EQ | NEQ | LTE | LT
 | IF | THEN | ELSE 
 | MATCH | END | WITH
-| SEMIC | COMMA | ARROW | DCOLON | UNDERLINE | VBAR
+| SEMIC | COMMA | ARROW | ANONARROW | COLON | DCOLON | UNDERLINE | VBAR
 | LPAR | RPAR | LBRACK | RBRACK | LBRACE | RBRACE
 | NAME of string
 | NAT of int
 | TRUE | FALSE
 | BOOL | INT | NIL
 | EOF 
-| VAR_TOKEN | FUN | REC
+| VAR_TOKEN | FUN | REC | FN
 
 (* Non-terminals declarations *)
 %nonterm Prog of expr
@@ -58,6 +58,7 @@ Types   : OK
     | Args of (plcType * string) list
     | CondExpr of expr option
     | MatchExpr of (expr option * expr) list
+    | Teste of unit
 
 (* Associativity *)
 %right SEMIC ARROW
@@ -85,6 +86,8 @@ Types   : OK
 
 %%
 
+Teste   :   FUN REC NAME Args COLON Type EQ Expr (print "Aqui\n")
+
 Prog    :   Expr    (Expr)
     |   Decl SEMIC Prog    (
             case #1(Decl) of 
@@ -95,7 +98,7 @@ Prog    :   Expr    (Expr)
 
 Decl    :   VAR_TOKEN NAME EQ Expr (("var", NAME, Expr, [], IntT))
     |   FUN NAME Args EQ Expr (("fun",NAME,makeAnon(Args, Expr), [], IntT))
-    |   FUN REC NAME Args DCOLON Type EQ Expr (("rec", NAME, Expr, Args, Type))
+    |   FUN REC NAME Args COLON Type EQ Expr (("rec", NAME, Expr, Args, Type))
 
 
 Expr    :   AtomExpr (AtomExpr)
@@ -125,8 +128,8 @@ AtomExpr:   Const (Const)
     |   NAME    (Var(NAME))
     |   LPAR Comps RPAR (List(Comps))
     |   LPAR Expr RPAR (Expr)
-    |   LPAR Expr RPAR (Expr)
     |   LBRACE Prog RBRACE (Prog)
+    |   FN Args ANONARROW Expr END (makeAnon(Args,Expr))
 
 AppExpr :   AtomExpr AtomExpr (Call(AtomExpr1, AtomExpr2))
     |   AppExpr AtomExpr (Call(AppExpr, AtomExpr))

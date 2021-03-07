@@ -31,6 +31,7 @@ fun keyword(s, lpos, rpos) =
         | "end" => END(lpos, rpos)
         | "var" => VAR_TOKEN(lpos, rpos)
         | "fun" => FUN(lpos,rpos)
+        | "fn" => FN(lpos,rpos) 
         | "rec" => REC(lpos,rpos)
         | "_" => UNDERLINE(lpos, rpos)
         | _     => NAME(s, lpos, rpos)
@@ -80,7 +81,8 @@ whitespace = [\ \t];
 "," => (COMMA(yypos, yypos));
 "|" => (VBAR(yypos, yypos));
 
-"->" => (print "Arrow\n"; ARROW(yypos, yypos));
+"->" => (ARROW(yypos, yypos));
+"=>" => (ANONARROW(yypos, yypos));
 
 "+" => (PLUS(yypos, yypos));
 "-" => (MINUS(yypos, yypos));
@@ -92,6 +94,7 @@ whitespace = [\ \t];
 "<" => (LT(yypos, yypos));
 "<=" => (LTE(yypos, yypos));
 
+":" => (COLON(yypos, yypos));
 "::" => (DCOLON(yypos, yypos));
 ";" => (SEMIC(yypos, yypos));
 "&&" => (AND(yypos, yypos));
