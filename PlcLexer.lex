@@ -74,6 +74,11 @@ whitespace = [\ \t];
 "<" => (LT(yypos, yypos));
 "<=" => (LTE(yypos, yypos));
 
+"::" => (DCOLON(yypos, yypos));
+";" => (SEMIC(yypos, yypos));
+"&&" => (AND(yypos, yypos));
+
+
 
 
 

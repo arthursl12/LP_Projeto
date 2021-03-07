@@ -33,10 +33,17 @@ fromString "(57-351)";
 fromString "(3+5) <= (75*34)";
 fromString "(3+5) < (75*34)";
 fromString "(3+5) = (75*34)";
-fromString "1+1";
+
+fromString "3::7::t";
+fromString "1+1; 7+7";
+
+fromString "p && c";
+fromString "(1 <= 35) && (5 != p)";
+
+
 
 fromString "print x; true";
-fromString "3::7::t";
+
 fromString "fn (Int x) => -x end";
 fromString "var x = 9; x + 3";
 fromString "fun f(Int x) = x; f(1)";
