@@ -17,6 +17,9 @@ val LPAR:  'a * 'a -> (svalue,'a) token
 val ARROW:  'a * 'a -> (svalue,'a) token
 val COMMA:  'a * 'a -> (svalue,'a) token
 val SEMIC:  'a * 'a -> (svalue,'a) token
+val LT:  'a * 'a -> (svalue,'a) token
+val LTE:  'a * 'a -> (svalue,'a) token
+val NEQ:  'a * 'a -> (svalue,'a) token
 val EQ:  'a * 'a -> (svalue,'a) token
 val DIV:  'a * 'a -> (svalue,'a) token
 val MULTI:  'a * 'a -> (svalue,'a) token

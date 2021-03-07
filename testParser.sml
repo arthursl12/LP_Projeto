@@ -26,6 +26,15 @@ fromString "()";
 fromString "([Bool] [])";
 fromString "(6,false)";
 fromString "(6,false)[1]";
+
+fromString "1+1";
+fromString "1-3*5/3";
+fromString "(57-351)";
+fromString "(3+5) <= (75*34)";
+fromString "(3+5) < (75*34)";
+fromString "(3+5) = (75*34)";
+fromString "1+1";
+
 fromString "print x; true";
 fromString "3::7::t";
 fromString "fn (Int x) => -x end";

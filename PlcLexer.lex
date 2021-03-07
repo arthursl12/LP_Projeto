@@ -64,5 +64,20 @@ whitespace = [\ \t];
 "," => (COMMA(yypos, yypos));
 "->" => (print "Arrow\n"; ARROW(yypos, yypos));
 
+"+" => (PLUS(yypos, yypos));
+"-" => (MINUS(yypos, yypos));
+"*" => (MULTI(yypos, yypos));
+"/" => (DIV(yypos, yypos));
+
+"=" => (EQ(yypos,yypos));
+"!=" => (NEQ(yypos,yypos));
+"<" => (LT(yypos, yypos));
+"<=" => (LTE(yypos, yypos));
+
+
+
+
+
+
 . => (error("\n***lexer error: bad character ***\n"); raise Fail("Lexer error:"^
         "bad character " ^ yytext));

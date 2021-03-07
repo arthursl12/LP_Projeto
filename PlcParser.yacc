@@ -28,7 +28,8 @@ Types   : OK
 
 (* Tokens *)
 %term   VAR
-| PLUS | MINUS | MULTI | DIV | EQ
+| PLUS | MINUS | MULTI | DIV
+| EQ | NEQ | LTE | LT
 | SEMIC | COMMA | ARROW
 | LPAR | RPAR | LBRACK | RBRACK
 | NAME of string
@@ -53,7 +54,8 @@ Types   : OK
 
 (* Associativity *)
 %right SEMIC ARROW
-%left EQ PLUS MINUS MULTI DIV 
+%left PLUS MINUS
+%left EQ MULTI DIV 
 %left RBRACK
 
 (* Where to end parsing *)
@@ -70,7 +72,17 @@ Types   : OK
 Prog    :   Expr    (Expr)
 
 Expr    :   AtomExpr (AtomExpr)
+    |   Expr PLUS Expr (Prim2("+",Expr1,Expr2))
+    |   Expr MINUS Expr (Prim2("-",Expr1,Expr2))
+    |   Expr MULTI Expr (Prim2("*",Expr1,Expr2))
+    |   Expr DIV Expr (Prim2("/",Expr1,Expr2))
+    |   Expr EQ Expr (Prim2("=",Expr1,Expr2))
+    |   Expr NEQ Expr (Prim2("!=",Expr1,Expr2))
+    |   Expr LT Expr (Prim2("<",Expr1,Expr2))
+    |   Expr LTE Expr (Prim2("<=",Expr1,Expr2))
     |   Expr LBRACK NAT RBRACK (Item(NAT, Expr))
+
+
 
 AtomExpr:   Const (Const)
     |   NAME    (Var(NAME))
