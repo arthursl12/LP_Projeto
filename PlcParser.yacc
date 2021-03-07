@@ -28,11 +28,12 @@ Types   : OK
 
 (* Tokens *)
 %term   VAR
-| PLUS | MINUS | MULTI | DIV
-| AND
+| PLUS | MINUS | MULTI | DIV | AND
+| PRINT | NOT | HEAD | TAIL | ISE
 | EQ | NEQ | LTE | LT
+| IF | THEN | ELSE
 | SEMIC | COMMA | ARROW | DCOLON
-| LPAR | RPAR | LBRACK | RBRACK
+| LPAR | RPAR | LBRACK | RBRACK | LBRACE | RBRACE
 | NAME of string
 | NAT of int
 | TRUE | FALSE
@@ -61,6 +62,7 @@ Types   : OK
 %right DCOLON
 %left PLUS MINUS
 %left MULTI DIV
+%nonassoc NOT HEAD TAIL ISE PRINT 
 
 %left LBRACK
 
@@ -78,6 +80,13 @@ Types   : OK
 Prog    :   Expr    (Expr)
 
 Expr    :   AtomExpr (AtomExpr)
+    |   IF Expr THEN Expr ELSE Expr (If(Expr1,Expr2,Expr3))
+    |   NOT Expr (Prim1("!",Expr))
+    |   MINUS Expr (Prim1("-",Expr))
+    |   HEAD Expr (Prim1("hd",Expr))
+    |   TAIL Expr (Prim1("tl",Expr))
+    |   ISE Expr (Prim1("ise",Expr))
+    |   PRINT Expr (Prim1("print",Expr))
     |   Expr AND Expr (Prim2("&&",Expr1,Expr2))
     |   Expr PLUS Expr (Prim2("+",Expr1,Expr2))
     |   Expr MINUS Expr (Prim2("-",Expr1,Expr2))
@@ -97,6 +106,8 @@ AtomExpr:   Const (Const)
     |   NAME    (Var(NAME))
     |   LPAR Comps RPAR (List(Comps))
     |   LPAR Expr RPAR (Expr)
+    |   LPAR Expr RPAR (Expr)
+    |   LBRACE Prog RBRACE (Prog)
 
 Const   :   TRUE    (ConB(true))
     |   FALSE   (ConB(false))

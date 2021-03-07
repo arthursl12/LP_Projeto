@@ -10,6 +10,8 @@ val FALSE:  'a * 'a -> (svalue,'a) token
 val TRUE:  'a * 'a -> (svalue,'a) token
 val NAT: (int) *  'a * 'a -> (svalue,'a) token
 val NAME: (string) *  'a * 'a -> (svalue,'a) token
+val RBRACE:  'a * 'a -> (svalue,'a) token
+val LBRACE:  'a * 'a -> (svalue,'a) token
 val RBRACK:  'a * 'a -> (svalue,'a) token
 val LBRACK:  'a * 'a -> (svalue,'a) token
 val RPAR:  'a * 'a -> (svalue,'a) token
@@ -18,10 +20,18 @@ val DCOLON:  'a * 'a -> (svalue,'a) token
 val ARROW:  'a * 'a -> (svalue,'a) token
 val COMMA:  'a * 'a -> (svalue,'a) token
 val SEMIC:  'a * 'a -> (svalue,'a) token
+val ELSE:  'a * 'a -> (svalue,'a) token
+val THEN:  'a * 'a -> (svalue,'a) token
+val IF:  'a * 'a -> (svalue,'a) token
 val LT:  'a * 'a -> (svalue,'a) token
 val LTE:  'a * 'a -> (svalue,'a) token
 val NEQ:  'a * 'a -> (svalue,'a) token
 val EQ:  'a * 'a -> (svalue,'a) token
+val ISE:  'a * 'a -> (svalue,'a) token
+val TAIL:  'a * 'a -> (svalue,'a) token
+val HEAD:  'a * 'a -> (svalue,'a) token
+val NOT:  'a * 'a -> (svalue,'a) token
+val PRINT:  'a * 'a -> (svalue,'a) token
 val AND:  'a * 'a -> (svalue,'a) token
 val DIV:  'a * 'a -> (svalue,'a) token
 val MULTI:  'a * 'a -> (svalue,'a) token

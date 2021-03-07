@@ -19,6 +19,13 @@ fun keyword(s, lpos, rpos) =
         | "Nil" => NIL(lpos, rpos)
         | "true" => TRUE(lpos, rpos)
         | "false" => FALSE(lpos, rpos)
+        | "print" => PRINT(lpos, rpos)
+        | "hd" => HEAD(lpos, rpos)
+        | "tl" => TAIL(lpos, rpos)
+        | "ise" => ISE(lpos, rpos)
+        | "if" => IF(lpos, rpos)
+        | "then" => THEN(lpos, rpos)
+        | "else" => ELSE(lpos, rpos)
         | _     => NAME(s, lpos, rpos)
         
 
@@ -61,6 +68,8 @@ whitespace = [\ \t];
 ")" => (RPAR(yypos, yypos));
 "[" => (LBRACK(yypos, yypos));
 "]" => (RBRACK(yypos, yypos));
+"{" => (LBRACE(yypos, yypos));
+"}" => (RBRACE(yypos, yypos));
 "," => (COMMA(yypos, yypos));
 "->" => (print "Arrow\n"; ARROW(yypos, yypos));
 
@@ -77,6 +86,8 @@ whitespace = [\ \t];
 "::" => (DCOLON(yypos, yypos));
 ";" => (SEMIC(yypos, yypos));
 "&&" => (AND(yypos, yypos));
+"!" => (NOT(yypos, yypos));
+
 
 
 

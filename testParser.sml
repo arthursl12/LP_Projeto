@@ -43,6 +43,12 @@ fromString "(1 <= 35) && (5 != p)";
 
 
 fromString "print x; true";
+fromString "ise (6,3,4)";
+fromString "(ise () = false)";
+
+fromString "if (x < y) then x else y";
+
+
 
 fromString "fn (Int x) => -x end";
 fromString "var x = 9; x + 3";
