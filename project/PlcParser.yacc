@@ -4,28 +4,6 @@
 
 %pos int
 
-(*
-CHECK-LIST:
-WIP = not fully implemented yet
-TODO = to be implemented
-OK = fully implemented
-
-Prog    : OK
-Decl    : OK
-Expr    : OK
-AtomExpr: OK
-AppExpr : OK
-Const   : OK
-Comps   : OK
-MatchExpr   : OK
-CondExpr    : OK
-Args    : OK
-Params  : OK
-TypedVar: OK
-AtomicType  : OK
-Types   : OK
-*)
-
 (* Tokens *)
 %term   VAR
 | PLUS | MINUS | MULTI | DIV | AND
@@ -58,7 +36,6 @@ Types   : OK
     | Args of (plcType * string) list
     | CondExpr of expr option
     | MatchExpr of (expr option * expr) list
-    | Teste of unit
 
 (* Associativity *)
 %right SEMIC ARROW
@@ -85,8 +62,6 @@ Types   : OK
 
 
 %%
-
-Teste   :   FUN REC NAME Args COLON Type EQ Expr (print "Aqui\n")
 
 Prog    :   Expr    (Expr)
     |   Decl SEMIC Prog    (
