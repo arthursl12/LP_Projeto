@@ -22,7 +22,7 @@
 
 (* Non-terminals declarations *)
 %nonterm Prog of expr
-    | Decl of string * string * expr * ((plcType * string) list) * plcType
+    | Decl of expr
     | Expr of expr
     | AtomExpr of expr
     | AppExpr of expr
@@ -64,16 +64,11 @@
 %%
 
 Prog    :   Expr    (Expr)
-    |   Decl SEMIC Prog    (
-            case #1(Decl) of 
-               "var" => Let(#2(Decl), #3(Decl), Prog)
-            | "fun" => Let(#2(Decl), #3(Decl), Prog)
-            | "rec" => makeFun(#2(Decl), #4(Decl), #5(Decl) , #3(Decl), Prog)
-            )
+    |   Decl     (Decl)
 
-Decl    :   VAR_TOKEN NAME EQ Expr (("var", NAME, Expr, [], IntT))
-    |   FUN NAME Args EQ Expr (("fun",NAME,makeAnon(Args, Expr), [], IntT))
-    |   FUN REC NAME Args COLON Type EQ Expr (("rec", NAME, Expr, Args, Type))
+Decl    :   VAR_TOKEN NAME EQ Expr SEMIC Prog (Let(NAME, Expr, Prog))
+    |   FUN NAME Args EQ Expr SEMIC Prog (Let(NAME, makeAnon(Args, Expr), Prog))
+    |   FUN REC NAME Args COLON Type EQ Expr SEMIC Prog (makeFun(NAME, Args, Type, Expr, Prog))
 
 
 Expr    :   AtomExpr (AtomExpr)
