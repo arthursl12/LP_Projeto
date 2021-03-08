@@ -1,8 +1,6 @@
 (* Plc Parser Aux *)
 
-(* 
-fun f (Nil x) : t = e1; e2.
-*)
+
 
 (* Creat the body of a function expression. *)
 fun makeFunAux (n: int, xs: (plcType * string) list, e: expr): expr =
@@ -10,16 +8,12 @@ fun makeFunAux (n: int, xs: (plcType * string) list, e: expr): expr =
     [(t, name)] => Let(name, Item(n, Var "$list"), e)
     |   ((t, name)::xs) => Let(name, Item(n, Var "$list"), makeFunAux(n+1,xs,e))
 
-
-(* Let ("x",Item (1, Var "$list"), Let ("y",Item (2, Var "$list") *)
-
 (* Create the list of arguments of a function. *)
 fun makeType (args: (plcType * string) list): plcType =
     case args of
         [] => ListT[]
     |   [(t, name)] => ListT[t]
     |   ((t, name)::xs) => ListT[t,makeType(xs)]
-(* ListT [IntT, IntT] *)
 
 (* Create a function expression. *)
 fun makeFun (f: string, xs: (plcType * string) list, rt: plcType, e1: expr, e2: expr): expr =

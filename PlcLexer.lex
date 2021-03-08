@@ -11,10 +11,7 @@ type lexresult = (slvalue, pos)token
 
 fun keyword(s, lpos, rpos) =
     case s of 
-        "Int"   => (
-            print "Int00\n";
-            INT(lpos, rpos)
-        )
+        "Int"   => INT(lpos, rpos)
         | "Bool"  => BOOL(lpos, rpos)
         | "Nil" => NIL(lpos, rpos)
         | "true" => TRUE(lpos, rpos)

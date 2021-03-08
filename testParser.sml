@@ -65,9 +65,92 @@ fromString "f(1)";
 fromString "fun f(Int x) = x; f(1)";
 fromString "fn (Int x) => -x end";
 fromString "fun rec f(Int n):Int = if n <= 0 then 0 else n + f(n-1); f(5)";
+
+print "================File=============\n";
 fromFile ("example.plc");
+print "================TestCases 0=============\n";
 
-use "testParserCases.sml"
 
+val cases =
+  (
+    let val s = "0";
+        val e = ConI 0
+    in
+        (s, e)
+    end
+  ) ::
+  [ (
+    let val s =
+    "fun rec map ((Int -> Int) f) : ([Int] -> [Int]) = fn ([Int] l) => if ise(l) then l else f(hd(l)) :: map(f)(tl(l)) end; map (fn (Int x) => 2*x end) (10::20::30::([Int] []))";
+        val e = Letrec ("map",FunT (IntT,IntT), "f", FunT (SeqT IntT,SeqT IntT), Anon(SeqT IntT, "l",If(Prim1 ("ise",Var "l"),Var "l",Prim2("::",Call (Var "f",Prim1 ("hd",Var "l")),Call (Call (Var "map",Var "f"),Prim1 ("tl",Var "l"))))),Call(Call (Var "map",Anon (IntT, "x",Prim2 ("*",ConI 2,Var "x"))),Prim2 ("::",ConI 10,Prim2 ("::",ConI 20,Prim2 ("::",ConI 30,ESeq (SeqT IntT))))))
+    in
+        (s, e)
+    end
+  ) ];
+
+val v1 = fromString (#1(hd(cases)));
+v1 = #2(hd(cases));
+
+
+print "================TestCases=============\n";
+use "testParserCases.sml";
+
+print "================TestFunct=============\n";
+
+cases;
+print "================Teste1=============\n";
+
+
+print "================Teste3=============\n";
+
+#1(hd(cases));
+fromString (#1(hd(cases)));
+val v1 = fromString (#1(hd(cases)));
+print "================Teste4=============\n";
+
+print "================Teste2=============\n";
+v1 = #2(hd(cases));
+print "================Teste6=============\n";
+
+
+fun test ([],n) = true
+| test ([h: (string * expr)],n): bool = 
+      let
+         val v = ((fromString (#1(h))) = #2(h))
+      in
+         if v = true then
+            (
+               TextIO.output(TextIO.stdOut, "Teste " ^ Int.toString n ^ "\n");
+               v
+            )
+         else
+            (
+               TextIO.output(TextIO.stdOut, "!!!Erro!!! Teste " ^ Int.toString n ^ "\n");
+               TextIO.output(TextIO.stdOut, #1(h));
+               TextIO.output(TextIO.stdOut, "\n");
+               v
+            )
+      end
+| test (h::xs, n) = 
+      let
+         val v = ((fromString (#1(h))) = #2(h))
+      in
+         if v = true then
+            (
+               TextIO.output(TextIO.stdOut, "Teste " ^ Int.toString n ^ "\n");
+               v andalso test(xs,n+1)
+            )
+         else
+            (
+               TextIO.output(TextIO.stdOut, "!!!Erro!!! Teste " ^ Int.toString n ^ "\n");
+               TextIO.output(TextIO.stdOut, #1(h));
+               TextIO.output(TextIO.stdOut, "\n");
+               v andalso test(xs,n+1)
+            )
+      end
+; 
+
+ 
+test(cases,1);
 (* Try to add a systematic way of using the test cases in
    testParserCases to stress test your parser *)
