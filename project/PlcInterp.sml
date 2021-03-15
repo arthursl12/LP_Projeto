@@ -7,4 +7,4 @@ exception ValueNotFoundInMatch
 exception NotAFunc
 
 (* TODO: tipos dos argumentos de eval *)
-fun eval (x, e:plcType env) : expr = ConI(0);
+fun eval (x: expr) (e:plcVal env) : plcVal = IntV(0);

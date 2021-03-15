@@ -15,7 +15,7 @@ exception ListOutOfRange
 exception OpNonList
 
 (* TODO: tipos dos argumentos de teval *)
-fun teval (e:expr) (st: (string * plcType) list) : plcType =
+fun teval (e:expr) (st: plcType env) : plcType =
     case e of
         (Var x) => (
             TextIO.output(TextIO.stdOut, "teval: Var\n");
