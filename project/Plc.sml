@@ -20,15 +20,16 @@ open PlcFrontEnd;
 use "PlcChecker.sml";
 use "PlcInterp.sml";
 
-fun run (expr:expr) : string =
+fun run (e:expr) : string =
     (let 
-        val e = []
-        val t = teval expr e
+        val t = teval e []
+        val res = eval e []
     in
-        "Result"
+        val2string(res)
     end)
     handle Impossible => "Impossible"
         |  NoMatchResults => "Match";
 
 print "TESTES!\n";
+run (fromString ("1 + 1"));
 run (fromString ("var x = 9; x + 3"));

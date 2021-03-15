@@ -7,4 +7,14 @@ exception ValueNotFoundInMatch
 exception NotAFunc
 
 (* TODO: tipos dos argumentos de eval *)
-fun eval (x: expr) (e:plcVal env) : plcVal = IntV(0);
+fun eval (e: expr) (st:plcVal env) : plcVal = 
+    case e of
+        (Var x) => (
+            TextIO.output(TextIO.stdOut, "eval: Var\n");
+            lookup st x
+        )
+    |   _ => (
+            TextIO.output(TextIO.stdOut, "Match no eval\n");
+            raise NoMatchResults
+        )
+    ;
