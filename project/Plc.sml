@@ -25,7 +25,7 @@ fun run (e:expr) : string =
         val t = teval e []
         val res = eval e []
     in
-        val2string(res)
+        type2string(t) ^ " " ^ val2string(res)
     end)
     handle Impossible => "Impossible"
         |  NoMatchResults => "Match";
@@ -48,6 +48,11 @@ run (fromString ("1 <= 10"));
 run (fromString ("10 <= 1"));
 run (fromString ("(10 <= 1) && (3 != 4)"));
 run (fromString ("(1 <= 10) && (3 = 3)"));
+
+print "Testes Match\n";
+run (fromString ("var x = 45/15; match x with | 0 -> 1 | _ -> -1 | 3 -> 2 end"));
+(* run (fromString ("var x = 2; match x with | 0 -> 1 | 3 -> 2 end")); *)
+
 
 run (fromString ("1 + 1"));
 run (fromString ("var x = 9; x + 3"));

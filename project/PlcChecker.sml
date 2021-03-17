@@ -69,6 +69,39 @@ fun teval (e:expr) (st: plcType env) : plcType =
                 |   ("::", a, SeqT b) => if a = b then SeqT b else raise DiffBrTypes
                 |   _ => raise UnknownType
             end
+
+    |   (Match (e1, lst)) =>(
+            (* Match of expr * (expr option * expr) list *)
+            let
+                val t1 = teval e1 st
+                (* Verifica se os tipos dos casos com SOME são do mesmo tipo de e1*)
+                fun typePattern [] t = true
+                |   typePattern [(SOME es, er)] t = (if (teval es st) = t then true else false)
+                |   typePattern [(NONE, er)] t = true
+                |   typePattern ((NONE, er)::xs) t = (typePattern xs t)
+                |   typePattern ((SOME es, er)::xs) t = (((teval es st) = t) andalso (typePattern xs t))
+                
+                (* Verifica se o tipo dos resultados são iguais*)
+                fun typeResult [] = ListT []
+                |   typeResult [(SOME es, er)] = teval er st
+                |   typeResult [(NONE, er)] = teval er st
+                |   typeResult ((NONE, er)::xs) = if ((teval er st) = (typeResult xs)) then
+                                                        (teval er st)
+                                                    else
+                                                        raise MatchResTypeDiff
+                |   typeResult ((SOME es, er)::xs) = if ((teval er st) = (typeResult xs)) then
+                                                            (teval er st)
+                                                        else
+                                                            raise MatchResTypeDiff
+                val t_Some = typePattern lst t1
+                val t_Res = typeResult lst
+            in
+                if (not t_Some) then
+                    raise MatchCondTypesDiff
+                else
+                    t_Res
+            end
+        )
     |   _ => (
             TextIO.output(TextIO.stdOut, "Match no teval\n");
             raise NoMatchResults
