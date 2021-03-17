@@ -13,8 +13,8 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
             TextIO.output(TextIO.stdOut, "eval: Var\n");
             lookup st x
         )
+    |   (Letrec (f, p_tp, p_name, ret_tp, e_corpo, call_e)) => eval call_e ((f, Clos(f, p_name, e_corpo, st))::st)
     |   (Prim2 (f, e1, e2)) =>(
-            TextIO.output(TextIO.stdOut, "eval: Prim2\n");
             let 
                 val t1 = eval e1 st
                 val t2 = eval e2 st
@@ -29,7 +29,7 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
                 |   ("&&", BoolV v1, BoolV v2) => BoolV(v1 andalso v2)
                 |   ("=", v1, v2) => BoolV(v1 = v2)
                 |   ("!=", v1, v2) => BoolV(v1 <> v2)
-                |   (";", _, _) => t2
+                |   (";", a, b) => b
                 |   ("::", a, SeqV b) => SeqV (a::b)
                 |   _ => raise ValueNotFoundInMatch
             end
@@ -54,15 +54,7 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
             |   hasNone ((NONE, er)::xs) = (true, er)
             |   hasNone ((SOME es, er)::xs) = hasNone xs
 
-            (* Acha o NONE, se ele existe
-            fun findNone [] = List []
-            |   findNone [(SOME es, er)] = List []
-            |   findNone [(NONE, er)] = er
-            |   findNone ((NONE, er)::xs) = er
-            |   findNone ((SOME es, er)::xs) = (findNone xs) *)
-
             val m_None = hasNone lst
-            (* val m_None = findNone(lst) *)
         in
             if #1(m_Some) then
                 eval (#2(m_Some)) st
@@ -72,25 +64,52 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
                 raise ValueNotFoundInMatch
         end
     )
-    |   (Call (Var f, par)) => (
-            let 
-                val fv = (lookup st f) 
-            in
-                case fv of
-                    (Clos(_, nome, corpo, fSt)) =>
-                        let
-                            val ev = (eval par st)
-                            val temp = (f, fv) :: fSt
-                            val st1 = (nome, ev) :: temp 
-                        in
-                            (eval corpo st1)
-                        end
-                | _ => raise NotAFunc
-            end
+    |   (Call (n, par)) => (
+            case n of
+                (Var f) => (
+                    let
+                        val fv = (lookup st f)
+                    in
+                        case fv of
+                            (Clos(_, nome, corpo, fSt)) =>
+                                let
+                                    val ev = (eval par st)
+                                    val st1 = (nome, ev) :: (f, fv) :: fSt 
+                                    val ret = (eval corpo st1)
+                                in
+                                    ret
+                                end
+                        | _ => raise NotAFunc
+                    end
+                )
+            |   (Call (Var n1, par1)) => 
+                    let
+                        val fv = (lookup st n1)
+                    in
+                        case fv of
+                            (Clos(_, nome, corpo, fSt)) =>
+                                let
+                                    val ev = (eval par1 st)
+                                    val st1 = (nome, ev) :: (n1, fv) :: fSt 
+                                    val closure = (eval corpo st1) (* "Closure intermediário" *)
+                                in
+                                    case closure of
+                                        (Clos(_, nome1, corpo1, fSt1)) =>
+                                            let
+                                                val ev = (eval par st)
+                                                val st1 = (nome1, ev) :: fSt1
+                                                val ret = (eval corpo1 st1)
+                                            in
+                                                ret
+                                            end
+                                    | _ => raise NotAFunc
+                                    
+                                end
+                        | _ => raise NotAFunc
+                    end
+            |   _ => raise ValueNotFoundInMatch
         )
-    |   (Anon (t, nome, e)) =>(
-        Clos("",nome, e, st)
-    )
+    |   (Anon (t, nome_par, e)) => Clos("",nome_par, e, st)
     |   _ => (
             TextIO.output(TextIO.stdOut, "Match no eval\n");
             raise NoMatchResults

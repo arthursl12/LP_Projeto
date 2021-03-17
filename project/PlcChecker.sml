@@ -50,6 +50,19 @@ fun teval (e:expr) (st: plcType env) : plcType =
                 teval e2 ((x,t1)::st)
             end
         )
+    |   (Letrec (f, p_tp, p_name, ret_tp, e_corpo, call_e)) => (
+            let
+                val tmp = (p_name, p_tp)::st
+                val t1 = teval e_corpo ((f, FunT(p_tp,ret_tp))::tmp)
+                val t2 = teval call_e ((f, FunT(p_tp,ret_tp))::st)
+            in
+                if t1 <> ret_tp then 
+                    raise WrongRetType
+                else 
+                    t2
+
+            end
+        )
     |   (Prim2 (f, e1, e2)) =>
             let 
                 val t1 = teval e1 st
@@ -108,7 +121,9 @@ fun teval (e:expr) (st: plcType env) : plcType =
                 val t_F = teval f st
             in
                 case t_F of
-                    (FunT(t1, t2)) => if t1 = t_Par then t2 else raise WrongRetType
+                    (FunT(t1, t2)) => if t1 = t_Par then t2 else (
+                        raise WrongRetType
+                    )
                 |   _ => raise NotFunc
             end
         )
