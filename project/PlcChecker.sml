@@ -14,6 +14,23 @@ exception NotFunc
 exception ListOutOfRange
 exception OpNonList
 
+(* Retorna true para tipos de igualdade. Segue o definido na especificação *)
+fun eqType t =(
+    let
+        fun eqTypeList [] = true
+        | eqTypeList [t] = eqType(t)
+        | eqTypeList (h::xs) = eqType(h) andalso eqTypeList(xs)
+    in
+        case t of
+            (IntT) => true
+        |   (BoolT) => true
+        |   (ListT x) => eqTypeList(x)
+        |   (SeqT t) => eqType(t)
+        |   _ => false
+    end
+)
+;
+
 (* TODO: tipos dos argumentos de teval *)
 fun teval (e:expr) (st: plcType env) : plcType =
     case e of
@@ -33,22 +50,25 @@ fun teval (e:expr) (st: plcType env) : plcType =
                 teval e2 ((x,t1)::st)
             end
         )
-    |   (Prim2 (f, e1, e2)) =>(
-            TextIO.output(TextIO.stdOut, "teval: Prim2\n");
+    |   (Prim2 (f, e1, e2)) =>
             let 
                 val t1 = teval e1 st
                 val t2 = teval e2 st
             in
-                case f of 
-                    "+" => if t1 = IntT andalso t2 = IntT then IntT else raise DiffBrTypes
-                |    "-" => if t1 = IntT andalso t2 = IntT then IntT else raise DiffBrTypes
-                |    "*" => if t1 = IntT andalso t2 = IntT then IntT else raise DiffBrTypes
-                |    "/" => if t1 = IntT andalso t2 = IntT then IntT else raise DiffBrTypes
-                |    "<" => if t1 = IntT andalso t2 = IntT then BoolT else raise DiffBrTypes
-                |    "<=" => if t1 = IntT andalso t2 = IntT then BoolT else raise DiffBrTypes
+                case (f,t1,t2) of 
+                    ("+", IntT, IntT) => IntT
+                |   ("-", IntT, IntT) => IntT
+                |   ("*", IntT, IntT) => IntT
+                |   ("/", IntT, IntT) => IntT
+                |   ("<", IntT, IntT) => BoolT
+                |   ("<=", IntT, IntT) => BoolT
+                |   ("&&", BoolT, BoolT) => BoolT
+                |   ("=", v1, v2) => if eqType(v1) andalso eqType(v2) then BoolT else raise NotEqTypes
+                |   ("!=", v1, v2) => BoolT
+                |   (";", _, _) => t2
+                |   ("::", a, SeqT b) => if a = b then SeqT b else raise DiffBrTypes
+                |   _ => raise UnknownType
             end
-
-        )
     |   _ => (
             TextIO.output(TextIO.stdOut, "Match no teval\n");
             raise NoMatchResults

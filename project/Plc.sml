@@ -31,5 +31,23 @@ fun run (e:expr) : string =
         |  NoMatchResults => "Match";
 
 print "TESTES!\n";
+print "Testes Aritméticos Básicos\n";
+run (fromString ("1 + 1"));
+run (fromString ("10 + 3"));
+run (fromString ("10 * 3"));
+run (fromString ("-10 - 3"));
+run (fromString ("-10 * 3"));
+run (fromString ("10 / 3"));
+
+print "Testes Booleanos Básicos\n";
+run (fromString ("1 < 1"));
+run (fromString ("1 < 10"));
+run (fromString ("10 < 1"));
+run (fromString ("1 <= 1"));
+run (fromString ("1 <= 10"));
+run (fromString ("10 <= 1"));
+run (fromString ("(10 <= 1) && (3 != 4)"));
+run (fromString ("(1 <= 10) && (3 = 3)"));
+
 run (fromString ("1 + 1"));
 run (fromString ("var x = 9; x + 3"));
