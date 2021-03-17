@@ -102,6 +102,23 @@ fun teval (e:expr) (st: plcType env) : plcType =
                     t_Res
             end
         )
+    |   (Call (f, par)) => (
+            let 
+                val t_Par = teval par st
+                val t_F = teval f st
+            in
+                case t_F of
+                    (FunT(t1, t2)) => if t1 = t_Par then t2 else raise WrongRetType
+                |   _ => raise NotFunc
+            end
+        )
+    |   (Anon (t, nome, e)) =>(
+        let
+            val t_Ret = teval e ((nome, t)::st)
+        in
+            FunT(t, t_Ret)
+        end
+        )
     |   _ => (
             TextIO.output(TextIO.stdOut, "Match no teval\n");
             raise NoMatchResults

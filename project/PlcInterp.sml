@@ -72,6 +72,25 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
                 raise ValueNotFoundInMatch
         end
     )
+    |   (Call (Var f, par)) => (
+            let 
+                val fv = (lookup st f) 
+            in
+                case fv of
+                    (Clos(_, nome, corpo, fSt)) =>
+                        let
+                            val ev = (eval par st)
+                            val temp = (f, fv) :: fSt
+                            val st1 = (nome, ev) :: temp 
+                        in
+                            (eval corpo st1)
+                        end
+                | _ => raise NotAFunc
+            end
+        )
+    |   (Anon (t, nome, e)) =>(
+        Clos("",nome, e, st)
+    )
     |   _ => (
             TextIO.output(TextIO.stdOut, "Match no eval\n");
             raise NoMatchResults

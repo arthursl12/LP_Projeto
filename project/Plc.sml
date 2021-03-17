@@ -53,6 +53,7 @@ print "Testes Match\n";
 run (fromString ("var x = 45/15; match x with | 0 -> 1 | _ -> -1 | 3 -> 2 end"));
 (* run (fromString ("var x = 2; match x with | 0 -> 1 | 3 -> 2 end")); *)
 
+print "Testes Call e Anon Simples\n";
+run (fromString ("var f = fn (Int x) => x*x end; f 5"));
 
-run (fromString ("1 + 1"));
 run (fromString ("var x = 9; x + 3"));
