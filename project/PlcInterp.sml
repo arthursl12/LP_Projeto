@@ -31,7 +31,7 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
                 |   ("!=", v1, v2) => BoolV(v1 <> v2)
                 |   (";", a, b) => b
                 |   ("::", a, SeqV b) => SeqV (a::b)
-                |   _ => raise ValueNotFoundInMatch
+                |   _ => raise Impossible
             end
         )
     |   (Match (e1, lst)) =>(
@@ -107,7 +107,7 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
                                 end
                         | _ => raise NotAFunc
                     end
-            |   _ => raise ValueNotFoundInMatch
+            |   _ => raise NotAFunc
         )
     |   (Anon (t, nome_par, e)) => Clos("",nome_par, e, st)
     |   _ => (
