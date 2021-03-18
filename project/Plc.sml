@@ -27,6 +27,23 @@ fun run (e:expr) : string =
     in
         val2string(res) ^ " : " ^ type2string(t)
     end)
-    handle Impossible => "Impossible"
-        |  NoMatchResults => "Match";
+    handle  Impossible => "Erro na avaliacao! Expressão impossivel de avaliar"
+        |   HDEmptySeq => "Erro na avaliacao! Operacao de head numa sequencia vazia"
+        |   TLEmptySeq => "Erro na avaliacao! Operacao de tail numa sequencia vazia"
+        |   ValueNotFoundInMatch => "Erro na avaliacao! Padrao nao encontrado para casamento no comando match"
+        |   NotAFunc => "Erro na avaliacao! Simbolo usado para chamada nao eh uma funcao"
+        |   UnknownType => "Erro na tipagem! Expressao possui tipo desconhecido ou nao que nao eh possivel avaliar seu tipo"
+        |   EmptySeq => "Erro na tipagem! Sequencia utilizada nao possui nenhum elemento"
+        |   NotEqTypes => "Erro na tipagem! Operandos utilizados nao são tipos de igualdade"
+        |   WrongRetType => "Erro na tipagem! Tipo de retorno da funcao incompativel"
+        |   DiffBrTypes => "Erro na tipagem! Tipos das branchs do If diferentes"
+        |   IfCondNotBool => "Erro na tipagem! Condição do comando If nao eh booleano"
+        |   NoMatchResults => "Erro na tipagem! Comando match sem padrões para casamento"
+        |   MatchResTypeDiff => "Erro na tipagem! Resultados dos casamentos de match de tipos diferentes"
+        |   MatchCondTypesDiff => "Erro na tipagem! Tipos dos padrões para casamentos de match de tipos diferentes"
+        |   CallTypeMisM => "Erro na tipagem! Parâmetro usado na chamada eh de tipo incompativel com o declarado na funcao"
+        |   NotFunc => "Erro na tipagem! Tipo do simbolo usado para chamada nao eh uma funcao"
+        |   ListOutOfRange => "Erro na tipagem! Indice requisitado fora do intervalo da lista"
+        |   OpNonList => "Erro na tipagem! Operando do operador Item usado nao eh uma lista"
+        |   SymbolNotFound => "Erro de ambiente! Símbolo requisitado não foi encontrado no ambiente";
 
