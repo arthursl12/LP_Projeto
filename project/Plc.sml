@@ -25,11 +25,8 @@ fun run (e:expr) : string =
         val t = teval e []
         val res = eval e []
     in
-        val2string(res)
+        val2string(res) ^ " : " ^ type2string(t)
     end)
     handle Impossible => "Impossible"
         |  NoMatchResults => "Match";
 
-print "TESTES!\n";
-run (fromString ("1 + 1"));
-run (fromString ("var x = 9; x + 3"));
