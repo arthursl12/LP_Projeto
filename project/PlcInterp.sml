@@ -13,20 +13,39 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
             TextIO.output(TextIO.stdOut, "eval: Var\n");
             lookup st x
         )
-    |   (ConI i) => (
-            TextIO.output(TextIO.stdOut, "eval: Int\n");
-            i
-        )
-    |   (ConB b) => (
-            TextIO.output(TextIO.stdOut, "eval: Bool\n");
-            b
-        )
+    |   (ConI i) => IntV(i)
+    |   (ConB b) => BoolV(b)
     |   (Let (x, e1, e2)) => (
             TextIO.output(TextIO.stdOut, "eval: Let variáveis\n");
             let 
                 val t1 = eval e1 st
             in 
                 eval e2 ((x,t1)::st)
+            end
+        )
+    |   (ESeq (t)) => () (* TODO *)
+    |   (If(e1, e2, e3)) => (
+            let
+                val v1 = lookup st e1
+                val v2 = eval e2 st
+                val v3 = eval e3 st
+            in
+                if v1 then v2 else v3
+            end
+        )
+    |   (List(e, lst)) => () (* TODO *)
+    |   (Item(i, e)) => () (* TODO *)
+    |   (Prim1(f, e1)) => (
+            let 
+                val v1 = eval e1 st
+            in
+                case f of 
+                    "-" => IntV(v1 * (~1))
+                |   "!" => BoolV(~v1)
+                |   "print" => nil
+                |   "hd" => hd v1
+                |   "tl" => tl v1
+                |   "ise" => v1 = []
             end
         )
     |   (Letrec (f, p_tp, p_name, ret_tp, e_corpo, call_e)) => eval call_e ((f, Clos(f, p_name, e_corpo, st))::st)

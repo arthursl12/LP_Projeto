@@ -38,18 +38,9 @@ fun teval (e:expr) (st: plcType env) : plcType =
             TextIO.output(TextIO.stdOut, "teval: Var\n");
             lookup st x
         )
-    |   (ConI i) => (
-            TextIO.output(TextIO.stdOut, "teval: Int\n");
-            IntT
-        )
-    |   (ConB b) => (
-            TextIO.output(TextIO.stdOut, "teval: Bool\n");
-            BoolT
-        )
-    |   (ESeq e) => (
-            TextIO.output(TextIO.stdOut, "teval: ESeq\n");
-            e
-        )
+    |   (ConI i) => IntT
+    |   (ConB b) => BoolT
+    |   (ESeq t) => SeqT t
     |   (Let (x, e1, e2)) => (
             TextIO.output(TextIO.stdOut, "teval: Let variáveis\n");
             let 
@@ -59,30 +50,28 @@ fun teval (e:expr) (st: plcType env) : plcType =
             end
         )
     |   (If (e1, e2, e3)) => (
-            TextIO.output(TextIO.stdOut, "teval: If\n");
             let
                 val t1 = teval e1 st
                 val t2 = teval e2 st
                 val t3 = teval e3 st
             in
                 if t1 = BoolT andalso t2 = t3 then t2 else raise DiffBrTypes
+            end
         )
-    |   (Prim1 (f, e1)) =>(
-            TextIO.output(TextIO.stdOut, "teval: Prim1\n");
+    |   (List(e list)) => ListT (teval e st)
+    |   (Item(i, e)) => () (* TODO *)
+    |   (Prim1 (f, e1)) => (
             let 
                 val t1 = teval e1 st
             in
                 case f of 
                     "-" => if t1 = IntT then IntT else raise DiffBrTypes
                 |   "!" => if t1 = BoolT then BoolT else raise DiffBrTypes
-                |   "print" => Nil
+                |   "print" => nil
                 |   "hd" => if t1 = SeqT then teval (hd t1) st else raise DiffBrTypes
                 |   "tl" => if t1 = SeqT then SeqT else raise DiffBrTypes
                 |   "ise" => if t1 = SeqT then BoolT else raise DiffBrTypes
             end
-        )
-    |   (Prim2 (f, e1, e2)) => (
-            TextIO.output(TextIO.stdOut, "teval: Prim2\n");
         )
     |   (Letrec (f, p_tp, p_name, ret_tp, e_corpo, call_e)) => (
             let
@@ -116,7 +105,6 @@ fun teval (e:expr) (st: plcType env) : plcType =
                 |   ("::", a, SeqT b) => if a = b then SeqT b else raise DiffBrTypes
                 |   _ => raise UnknownType
             end
-
     |   (Match (e1, lst)) =>(
             (* Match of expr * (expr option * expr) list *)
             let
