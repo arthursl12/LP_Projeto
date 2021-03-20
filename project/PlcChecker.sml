@@ -2,17 +2,17 @@
 
 exception EmptySeq
 exception UnknownType
-(*OK*)exception NotEqTypes 
-(*OK*)exception WrongRetType
-(*OK*)exception DiffBrTypes
-(*OK*)exception IfCondNotBool
-(*OK*)exception NoMatchResults
-(*OK*)exception MatchResTypeDiff
-(*OK*)exception MatchCondTypesDiff
-(*OK*)exception CallTypeMisM
-(*OK*)exception NotFunc
-(*OK*)exception ListOutOfRange
-(*OK*)exception OpNonList
+exception NotEqTypes 
+exception WrongRetType
+exception DiffBrTypes
+exception IfCondNotBool
+exception NoMatchResults
+exception MatchResTypeDiff
+exception MatchCondTypesDiff
+exception CallTypeMisM
+exception NotFunc
+exception ListOutOfRange
+exception OpNonList
 
 (* Retorna true para tipos de igualdade. Segue o definido na especificação *)
 fun eqType t =(

@@ -1,10 +1,10 @@
 (* PlcInterp *)
 
 exception Impossible
-(*OK*)exception HDEmptySeq
-(*OK*)exception TLEmptySeq
-(*OK*)exception ValueNotFoundInMatch
-(*OK*)exception NotAFunc
+exception HDEmptySeq
+exception TLEmptySeq
+exception ValueNotFoundInMatch
+exception NotAFunc
 
 (* TODO: tipos dos argumentos de eval *)
 fun eval (e: expr) (st:plcVal env) : plcVal = 
