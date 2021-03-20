@@ -643,9 +643,68 @@ val casesInterpr =
     in
         (s, e)
     end
+  ) ::
+
+  (
+    let val s = "if 11 = 12 then 1 else 0";
+        val e = "0 : Int"
+    in
+        (s, e)
+    end
+  ) 
+  ::
+
+  (
+    let val s = "var b = 1 = 2; if b then 3 else 4";
+        val e = "4 : Int"
+    in
+        (s, e)
+    end
   ) 
 
-    :: [ (
+  ::
+
+  (
+    let val s = "fun rec f1(Int x) : Int = x + 1; f1(12)";
+        val e = "13 : Int"
+    in
+        (s, e)
+    end
+  ) 
+  
+  (* 
+  Esses abaixo disparam exceções!
+  
+  ::
+
+  (
+    let val s = "var b = 1 = 2; if b then b else 4";
+        val e = "13 : Int"
+    in
+        (s, e)
+    end
+  )  
+  
+  ::
+  (
+    let val s = "fun f(Bool x) = if x then 11 else 22; f(0)";
+        val e = "11 : Int"
+    in
+        (s, e)
+    end
+  ) 
+
+
+ ::
+  (
+    let val s = "fun rec f (Bool x) : Bool = if x then 11 else 12; f(true)";
+        val e = "11 : Int"
+    in
+        (s, e)
+    end
+  )   *)
+
+  :: [ (
     let val s = "0";
         val e = "0 : Int"
     in

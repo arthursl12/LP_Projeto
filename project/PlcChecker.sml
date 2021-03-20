@@ -100,7 +100,7 @@ fun teval (e:expr) (st: plcType env) : plcType =
                 |   ("<=", IntT, IntT) => BoolT
                 |   ("&&", BoolT, BoolT) => BoolT
                 |   ("=", v1, v2) => if eqType(v1) andalso eqType(v2) then BoolT else raise NotEqTypes
-                |   ("!=", v1, v2) => BoolT
+                |   ("!=", v1, v2) => if eqType(v1) andalso eqType(v2) then BoolT else raise NotEqTypes
                 |   (";", _, _) => t2
                 |   ("::", a, SeqT b) => if a = b then SeqT b else raise DiffBrTypes
                 |   _ => raise UnknownType
@@ -116,7 +116,10 @@ fun teval (e:expr) (st: plcType env) : plcType =
                 |   typePattern ((NONE, er)::xs) t = (typePattern xs t)
                 |   typePattern ((SOME es, er)::xs) t = (((teval es st) = t) andalso (typePattern xs t))
                 
-                (* Verifica se o tipo dos resultados são iguais*)
+                (* 
+                Verifica se o tipo dos resultados são iguais.
+                Se não for, dispara exceção específica
+                *)
                 fun typeResult [] = ListT []
                 |   typeResult [(SOME es, er)] = teval er st
                 |   typeResult [(NONE, er)] = teval er st
@@ -133,6 +136,8 @@ fun teval (e:expr) (st: plcType env) : plcType =
             in
                 if (not t_Some) then
                     raise MatchCondTypesDiff
+                else if (t_Res = ListT []) then
+                    raise NoMatchResults
                 else
                     t_Res
             end
@@ -144,7 +149,7 @@ fun teval (e:expr) (st: plcType env) : plcType =
             in
                 case t_F of
                     (FunT(t1, t2)) => if t1 = t_Par then t2 else (
-                        raise WrongRetType
+                        raise CallTypeMisM
                     )
                 |   _ => raise NotFunc
             end
