@@ -1,10 +1,10 @@
 (* PlcInterp *)
 
 exception Impossible
-exception HDEmptySeq
-exception TLEmptySeq
-exception ValueNotFoundInMatch
-exception NotAFunc
+(*OK*)exception HDEmptySeq
+(*OK*)exception TLEmptySeq
+(*OK*)exception ValueNotFoundInMatch
+(*OK*)exception NotAFunc
 
 (* TODO: tipos dos argumentos de eval *)
 fun eval (e: expr) (st:plcVal env) : plcVal = 
@@ -48,7 +48,7 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
                 (ListV lst) => (
                     auxItem(lst,i)
                 )
-                |   _ => raise OpNonList
+                |   _ => raise Impossible
         end
     )
     |   (Prim1(f, e1)) => (
@@ -62,8 +62,8 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
                     TextIO.output(TextIO.stdOut, val2string(v1) ^ "\n");
                     ListV []
                     )
-                |   ("hd", SeqV lst) => hd(lst)
-                |   ("tl", SeqV lst) => SeqV(tl(lst))
+                |   ("hd", SeqV lst) => if lst = [] then raise HDEmptySeq else hd(lst)
+                |   ("tl", SeqV lst) => if lst = [] then raise TLEmptySeq else SeqV(tl(lst))
                 |   ("ise", SeqV lst) => BoolV(lst = [])
                 |   _ => raise Impossible
             end

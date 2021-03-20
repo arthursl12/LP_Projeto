@@ -39,6 +39,6 @@ fun test ([],n) = true
 ; 
 
 print "TESTES!\n";
-run (fromString ("(1,true, ([Bool] []))[3]"));
+(* run (fromString ("fun rec f (Bool x) : Bool = if x then 11 else 12; f(true)")); *)
 use "testInterprCases.sml";
 test(casesInterpr,1);

@@ -684,7 +684,7 @@ val casesInterpr =
         (s, e)
     end
   )  
-  
+
   ::
   (
     let val s = "fun f(Bool x) = if x then 11 else 22; f(0)";

@@ -2,17 +2,17 @@
 
 exception EmptySeq
 exception UnknownType
-exception NotEqTypes
-exception WrongRetType
-exception DiffBrTypes
-exception IfCondNotBool
-exception NoMatchResults
-exception MatchResTypeDiff
-exception MatchCondTypesDiff
-exception CallTypeMisM
-exception NotFunc
-exception ListOutOfRange
-exception OpNonList
+(*OK*)exception NotEqTypes 
+(*OK*)exception WrongRetType
+(*OK*)exception DiffBrTypes
+(*OK*)exception IfCondNotBool
+(*OK*)exception NoMatchResults
+(*OK*)exception MatchResTypeDiff
+(*OK*)exception MatchCondTypesDiff
+(*OK*)exception CallTypeMisM
+(*OK*)exception NotFunc
+(*OK*)exception ListOutOfRange
+(*OK*)exception OpNonList
 
 (* Retorna true para tipos de igualdade. Segue o definido na especificação *)
 fun eqType t =(
@@ -50,7 +50,12 @@ fun teval (e:expr) (st: plcType env) : plcType =
                 val t2 = teval e2 st
                 val t3 = teval e3 st
             in
-                if t1 = BoolT andalso t2 = t3 then t2 else raise DiffBrTypes
+                if t1 <> BoolT then
+                    raise IfCondNotBool
+                else if t2 = t3 then 
+                    t2 
+                else 
+                    raise DiffBrTypes
             end
         )
     |   (List lst) => (
