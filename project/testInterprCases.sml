@@ -674,7 +674,7 @@ val casesInterpr =
   
   (* 
   Esses abaixo disparam exceções!
-  
+
   ::
 
   (

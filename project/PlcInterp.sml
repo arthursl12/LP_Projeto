@@ -9,43 +9,63 @@ exception NotAFunc
 (* TODO: tipos dos argumentos de eval *)
 fun eval (e: expr) (st:plcVal env) : plcVal = 
     case e of
-        (Var x) => (
-            TextIO.output(TextIO.stdOut, "eval: Var\n");
-            lookup st x
-        )
+        (Var x) => lookup st x
     |   (ConI i) => IntV(i)
     |   (ConB b) => BoolV(b)
-    |   (Let (x, e1, e2)) => (
-            TextIO.output(TextIO.stdOut, "eval: Let variáveis\n");
+    |   (Let (x, e1, e2)) =>
             let 
                 val t1 = eval e1 st
             in 
                 eval e2 ((x,t1)::st)
             end
-        )
-    |   (ESeq (t)) => () (* TODO *)
+    |   (ESeq (t)) => SeqV []
     |   (If(e1, e2, e3)) => (
             let
-                val v1 = lookup st e1
-                val v2 = eval e2 st
-                val v3 = eval e3 st
+                val v1 = eval e1 st
             in
-                if v1 then v2 else v3
+                if v1 = BoolV(true) then eval e2 st else eval e3 st
             end
         )
-    |   (List(e, lst)) => () (* TODO *)
-    |   (Item(i, e)) => () (* TODO *)
+    |   (List lst) => (
+        let
+            fun auxList [] : plcVal list = []
+            |   auxList [t] = [eval t st]
+            |   auxList (a::xs) = (eval a st) :: auxList(xs)
+            val t1 = auxList(lst)
+        in
+            ListV (t1)
+        end
+    )
+    |   (Item(i, e)) => (
+        let 
+            val lst_e = eval e st
+            fun auxItem ([],n) : plcVal = raise Impossible
+            |   auxItem ([t],1) = t
+            |   auxItem (a::xs,1) = a
+            |   auxItem (a::xs,n) = auxItem(xs,n-1)
+        in  
+            case lst_e of 
+                (ListV lst) => (
+                    auxItem(lst,i)
+                )
+                |   _ => raise OpNonList
+        end
+    )
     |   (Prim1(f, e1)) => (
             let 
                 val v1 = eval e1 st
             in
-                case f of 
-                    "-" => IntV(v1 * (~1))
-                |   "!" => BoolV(~v1)
-                |   "print" => nil
-                |   "hd" => hd v1
-                |   "tl" => tl v1
-                |   "ise" => v1 = []
+                case (f, v1) of 
+                    ("-", IntV i) => IntV(i * (~1))
+                |   ("!", BoolV b) => BoolV(not(b))
+                |   ("print", _) => (
+                    TextIO.output(TextIO.stdOut, val2string(v1) ^ "\n");
+                    ListV []
+                    )
+                |   ("hd", SeqV lst) => hd(lst)
+                |   ("tl", SeqV lst) => SeqV(tl(lst))
+                |   ("ise", SeqV lst) => BoolV(lst = [])
+                |   _ => raise Impossible
             end
         )
     |   (Letrec (f, p_tp, p_name, ret_tp, e_corpo, call_e)) => eval call_e ((f, Clos(f, p_name, e_corpo, st))::st)
@@ -145,8 +165,4 @@ fun eval (e: expr) (st:plcVal env) : plcVal =
             |   _ => raise NotAFunc
         )
     |   (Anon (t, nome_par, e)) => Clos("",nome_par, e, st)
-    |   _ => (
-            TextIO.output(TextIO.stdOut, "Match no eval\n");
-            raise NoMatchResults
-        )
     ;

@@ -34,21 +34,16 @@ fun eqType t =(
 (* TODO: tipos dos argumentos de teval *)
 fun teval (e:expr) (st: plcType env) : plcType =
     case e of
-        (Var x) => (
-            TextIO.output(TextIO.stdOut, "teval: Var\n");
-            lookup st x
-        )
+        (Var x) => lookup st x
     |   (ConI i) => IntT
     |   (ConB b) => BoolT
-    |   (ESeq t) => SeqT t
-    |   (Let (x, e1, e2)) => (
-            TextIO.output(TextIO.stdOut, "teval: Let variáveis\n");
+    |   (ESeq t) => t
+    |   (Let (x, e1, e2)) => 
             let 
                 val t1 = teval e1 st
             in 
                 teval e2 ((x,t1)::st)
             end
-        )
     |   (If (e1, e2, e3)) => (
             let
                 val t1 = teval e1 st
@@ -58,19 +53,44 @@ fun teval (e:expr) (st: plcType env) : plcType =
                 if t1 = BoolT andalso t2 = t3 then t2 else raise DiffBrTypes
             end
         )
-    |   (List(e list)) => ListT (teval e st)
-    |   (Item(i, e)) => () (* TODO *)
+    |   (List lst) => (
+        let
+            fun auxList [] : plcType list = []
+            |   auxList [t] = [teval t st]
+            |   auxList (a::xs) = (teval a st) :: auxList(xs)
+            val t1 = auxList(lst)
+        in
+            ListT (t1)
+        end
+    )
+
+    |   (Item(i, e)) => (
+        let 
+            val lst_e = teval e st
+            fun auxItem ([],n) : plcType = raise ListOutOfRange
+            |   auxItem ([t],1) = t
+            |   auxItem (a::xs,1) = a
+            |   auxItem (a::xs,n) = auxItem(xs,n-1)
+        in  
+            case lst_e of 
+                (ListT lst) => (
+                    auxItem(lst,i)
+                )
+                |   _ => raise OpNonList
+        end
+    )
     |   (Prim1 (f, e1)) => (
             let 
                 val t1 = teval e1 st
             in
-                case f of 
-                    "-" => if t1 = IntT then IntT else raise DiffBrTypes
-                |   "!" => if t1 = BoolT then BoolT else raise DiffBrTypes
-                |   "print" => nil
-                |   "hd" => if t1 = SeqT then teval (hd t1) st else raise DiffBrTypes
-                |   "tl" => if t1 = SeqT then SeqT else raise DiffBrTypes
-                |   "ise" => if t1 = SeqT then BoolT else raise DiffBrTypes
+                case (f, t1) of 
+                    ("-", IntT) => IntT
+                |   ("!", BoolT) => BoolT
+                |   ("print", _)  => ListT []
+                |   ("hd", SeqT t) => t
+                |   ("tl", SeqT t) => SeqT(t)
+                |   ("ise", SeqT t) => BoolT 
+                |   _ => raise UnknownType
             end
         )
     |   (Letrec (f, p_tp, p_name, ret_tp, e_corpo, call_e)) => (
@@ -160,10 +180,6 @@ fun teval (e:expr) (st: plcType env) : plcType =
         in
             FunT(t, t_Ret)
         end
-        )
-    |   _ => (
-            TextIO.output(TextIO.stdOut, "Match no teval\n");
-            raise NoMatchResults
         )
     ;
 

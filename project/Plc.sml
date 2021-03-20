@@ -46,4 +46,3 @@ fun run (e:expr) : string =
         |   ListOutOfRange => "Erro na tipagem! Indice requisitado fora do intervalo da lista"
         |   OpNonList => "Erro na tipagem! Operando do operador Item usado nao eh uma lista"
         |   SymbolNotFound => "Erro de ambiente! Símbolo requisitado não foi encontrado no ambiente";
-

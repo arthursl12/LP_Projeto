@@ -39,6 +39,6 @@ fun test ([],n) = true
 ; 
 
 print "TESTES!\n";
-run (fromString ("fn (Int x, Int y) => x - y end"));
+run (fromString ("(1,true, ([Bool] []))[3]"));
 use "testInterprCases.sml";
 test(casesInterpr,1);
