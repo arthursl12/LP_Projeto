@@ -39,6 +39,6 @@ fun test ([],n) = true
 ; 
 
 print "TESTES!\n";
-(* run (fromString ("fun rec map ((Int -> Int) f) : ([Int] -> [Int]) = fn ([Int] l) => if ise(l) then l else f(hd(l)) :: map(f)(tl(l)) end; map (2) (10::20::30::([Int] []))")); *)
+run (fromString ("(1,true, (Int []))[3]"));
 use "testInterprCases.sml";
 test(casesInterpr,1);

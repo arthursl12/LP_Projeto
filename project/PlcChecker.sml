@@ -37,7 +37,15 @@ fun teval (e:expr) (st: plcType env) : plcType =
         (Var x) => lookup st x
     |   (ConI i) => IntT
     |   (ConB b) => BoolT
-    |   (ESeq t) => t
+    |   (ESeq t) => (
+            case t of
+                (SeqT t1) => t
+            |   _ =>  raise EmptySeq 
+    )
+    
+    
+    
+   
     |   (Let (x, e1, e2)) => 
             let 
                 val t1 = teval e1 st
